@@ -36,7 +36,7 @@ const Service = ({ Icon, title, subTitle, border = true }) => {
         }
       }
       sx={{
-        borderColor: `${grey[700]} !important`,
+        borderColor: `${grey[500]} !important`,
         "& svg": {
           color: "#eee",
           fontSize: {

@@ -14,14 +14,9 @@ export const Watches = {
     src: {
       main: "src/assets/Bold-Round-Analog-Gunmetal-Dial-1-300x300.jpg",
       slider: [
-        "src//assets/item1/Bold-Round-Analog-Gunmetal-Dial-1.jpg",
-        "src//assets/item1/Bold-Round-Analog-Gunmetal-Dial-2.jpg",
-        "src//assets/item1/Bold-Round-Analog-Gunmetal-Dial-3.jpg",
-      ],
-      smallSlider: [
-        "src/assets/item1/1.jpg",
-        "src/assets/item1/2.jpg",
-        "src/assets/item1/3.jpg",
+        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-1.jpg",
+        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-2.jpg",
+        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-3.jpg",
       ],
     },
   },

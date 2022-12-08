@@ -85,13 +85,13 @@ const Footer = () => {
             sx={{
               borderRadius: "0",
               width: { md: "25%", sm: "10%", xs: "100%" },
-              borderColor: "secondary.main",
+              borderColor: grey[500],
               color: "#eee",
               backgroundColor: "secondary.main",
               "&:hover": {
                 color: "secondary.main",
                 background: "transparent",
-                borderColor: "secondary.main",
+                borderColor: grey[500],
               },
             }}
           >
@@ -112,13 +112,13 @@ const Footer = () => {
             sx={{
               minWidth: "40px",
               borderRadius: "0",
-              borderColor: "grey.main",
+              borderColor: grey[500],
               color: "secondary.main",
               backgroundColor: "transparent",
               padding: "0.9rem",
               "&:hover": {
                 color: "#eee",
-                borderColor: "grey.main !important",
+                borderColor: `${grey[500]} !important`,
                 backgroundColor: "secondary.main",
               },
             }}
@@ -131,14 +131,14 @@ const Footer = () => {
             sx={{
               minWidth: "40px",
               borderRadius: "0",
-              borderColor: "grey.main",
+              borderColor: grey[500],
               color: "secondary.main",
               backgroundColor: "transparent",
               padding: "0.9rem",
               "&:hover": {
                 color: "#eee",
                 backgroundColor: "grey.main",
-                borderColor: "secondary.main !important",
+                borderColor: `${grey[500]} !important`,
               },
             }}
           >
@@ -150,13 +150,13 @@ const Footer = () => {
             sx={{
               minWidth: "40px",
               borderRadius: "0",
-              borderColor: "grey.main",
+              borderColor: grey[500],
               color: "secondary.main",
               backgroundColor: "transparent",
               padding: "0.9rem",
               "&:hover": {
                 color: "#eee",
-                borderColor: "grey.main !important",
+                borderColor: `${grey[500]} !important`,
                 backgroundColor: "secondary.main",
               },
             }}
@@ -173,7 +173,7 @@ const Footer = () => {
         }}
         borderBottom={1}
         borderTop={1}
-        borderColor={grey[700]}
+        borderColor={grey[500]}
         py={3}
       >
         <Grid

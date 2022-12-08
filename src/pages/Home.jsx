@@ -33,7 +33,7 @@ const Home = () => {
         gap="2rem"
         px={5}
         pb={12}
-        borderColor={grey[700]}
+        borderColor={grey[500]}
         borderBottom={1}
       >
         <Stack justifyContent={"center"} alignItems={"center"}>
@@ -69,7 +69,7 @@ const Home = () => {
       >
         TREND WATCHES
       </Typography>
-      <Grid container borderBottom={1} borderTop={1} borderColor={grey[700]}>
+      <Grid container borderBottom={1} borderTop={1} borderColor={grey[500]}>
         <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
         <Product
           name={"DAPPER ROUND ANALOG"}
@@ -85,7 +85,7 @@ const Home = () => {
           flexDirection={"column"}
           bgcolor={grey[100]}
           borderBottom={1}
-          borderColor={grey[700]}
+          borderColor={grey[500]}
           md={6}
           xs={12}
           justifyContent={"center"}
@@ -190,7 +190,7 @@ const Home = () => {
             xs: "none",
           }}
           sx={{
-            borderColor: `${grey[700]} !important`,
+            borderColor: `${grey[500]} !important`,
           }}
           md={6}
           xs={12}
@@ -245,7 +245,7 @@ const Home = () => {
           container
           borderTop={1}
           sx={{
-            borderColor: `${grey[700]} !important`,
+            borderColor: `${grey[500]} !important`,
           }}
           md={6}
           xs={12}
@@ -333,7 +333,7 @@ const Home = () => {
       >
         POPULAR WATCHES
       </Typography>
-      <Grid container borderBottom={1} borderTop={1} borderColor={grey[700]}>
+      <Grid container borderBottom={1} borderTop={1} borderColor={grey[500]}>
         <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
         <Product
           name={"THE RUNWELL SPORT CHRONO"}

@@ -126,7 +126,7 @@ const ImgSlider = () => {
                 "&:hover": {
                   color: "primary.main",
                   border: 1,
-                  borderColor: "primary.main",
+                  borderColor: grey[500],
                 },
               }}
               disableRipple
@@ -211,7 +211,7 @@ const ImgSlider = () => {
                 "&:hover": {
                   color: "primary.main",
                   border: 1,
-                  borderColor: "primary.main",
+                  borderColor: grey[500],
                 },
               }}
               component={Link}
@@ -296,7 +296,7 @@ const ImgSlider = () => {
                 "&:hover": {
                   color: "primary.main",
                   border: 1,
-                  borderColor: "primary.main",
+                  borderColor: grey[500],
                 },
               }}
               component={Link}

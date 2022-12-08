@@ -60,7 +60,7 @@ const Product = ({
       onMouseOut={() => setIsHovered(false)}
       sx={{
         cursor: "pointer",
-        borderColor: `${grey[700]} !important`,
+        borderColor: `${grey[500]} !important`,
       }}
       pt={5}
       pb={15}
@@ -115,7 +115,7 @@ const Product = ({
               whiteSpace: "nowrap",
               columnGap: "0.7rem",
               border: 1,
-              borderColor: "secondary.main",
+              borderColor: grey[500],
               "&:hover": {
                 backgroundColor: "secondary.main",
                 color: "#fff",
@@ -132,7 +132,7 @@ const Product = ({
               px: 2,
               backgroundColor: "transparent",
               border: 1,
-              borderColor: "secondary.main",
+              borderColor: grey[500],
               "&:hover": {
                 backgroundColor: "secondary.main",
                 color: "#fff",
