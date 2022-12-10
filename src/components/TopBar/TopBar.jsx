@@ -408,6 +408,12 @@ const TopBar = () => {
                   md: 14,
                   xs: 8,
                 }}
+                sx={{
+                  transition: "200ms",
+                  ":hover": {
+                    color: "primary.main",
+                  },
+                }}
               >
                 WOMEN
               </Typography>
@@ -419,6 +425,12 @@ const TopBar = () => {
                 fontSize={{
                   md: 14,
                   xs: 8,
+                }}
+                sx={{
+                  transition: "200ms",
+                  ":hover": {
+                    color: "primary.main",
+                  },
                 }}
               >
                 MEN
@@ -432,6 +444,12 @@ const TopBar = () => {
                   md: 14,
                   xs: 8,
                 }}
+                sx={{
+                  transition: "200ms",
+                  ":hover": {
+                    color: "primary.main",
+                  },
+                }}
               >
                 KIDS
               </Typography>
@@ -444,6 +462,12 @@ const TopBar = () => {
                   md: 14,
                   xs: 8,
                 }}
+                sx={{
+                  transition: "200ms",
+                  ":hover": {
+                    color: "primary.main",
+                  },
+                }}
               >
                 BRANDS
               </Typography>
@@ -455,6 +479,12 @@ const TopBar = () => {
                 fontSize={{
                   md: 14,
                   xs: 8,
+                }}
+                sx={{
+                  transition: "200ms",
+                  ":hover": {
+                    color: "primary.main",
+                  },
                 }}
               >
                 OFFERS

@@ -14,8 +14,12 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { useNavigate } from "react-router-dom";
 
 const Product = ({
+  md,
+  sm,
+  xs,
+  borderBottom = true,
   name,
-  border = true,
+  borderRight = true,
   removeBorderatMediumScreen = false,
 }) => {
   const theme = createTheme({
@@ -41,15 +45,15 @@ const Product = ({
   `;
   return (
     <Grid
-      md={3}
-      sm={6}
-      xs={12}
+      md={md && md}
+      sm={sm && sm}
+      xs={xs && xs}
       item
       container
       justifyContent={"center"}
       alignItems={"center"}
       borderRight={
-        border && {
+        borderRight && {
           md: 1,
           sm: !removeBorderatMediumScreen && 1,
           xs: "none",
@@ -64,10 +68,12 @@ const Product = ({
       }}
       pt={5}
       pb={15}
-      borderBottom={{
-        md: "none",
-        xs: 1,
-      }}
+      borderBottom={
+        borderBottom && {
+          md: "none",
+          xs: 1,
+        }
+      }
     >
       <img
         src={item.src.main}

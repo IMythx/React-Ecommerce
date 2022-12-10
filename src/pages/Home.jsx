@@ -70,13 +70,32 @@ const Home = () => {
         TREND WATCHES
       </Typography>
       <Grid container borderBottom={1} borderTop={1} borderColor={grey[500]}>
-        <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} />
         <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"BOLD ROUND ANALOG GUNMETAL DIAL"}
+        />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
           name={"DAPPER ROUND ANALOG"}
           removeBorderatMediumScreen={true}
         />
-        <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
-        <Product name={"ROUND ANALOG WHITE DIAL LADIES"} border={false} />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"ROUND ANALOG WHITE & BEE DIAL LADIES"}
+        />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"ROUND ANALOG WHITE DIAL LADIES"}
+          borderRight={false}
+        />
       </Grid>
       <Grid container>
         <Grid
@@ -334,13 +353,32 @@ const Home = () => {
         POPULAR WATCHES
       </Typography>
       <Grid container borderBottom={1} borderTop={1} borderColor={grey[500]}>
-        <Product name={"ROUND ANALOG WHITE & BEE DIAL LADIES"} />
         <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"ROUND ANALOG WHITE & BEE DIAL LADIES"}
+        />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
           name={"THE RUNWELL SPORT CHRONO"}
           removeBorderatMediumScreen={true}
         />
-        <Product name={"TATUM ROUND ANALOG BLUE DIAL LADIES"} />
-        <Product name={"BOLD ROUND ANALOG GUNMETAL DIAL"} border={false} />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"TATUM ROUND ANALOG BLUE DIAL LADIES"}
+        />
+        <Product
+          md={3}
+          sm={6}
+          xs={12}
+          name={"BOLD ROUND ANALOG GUNMETAL DIAL"}
+          borderRight={false}
+        />
       </Grid>
     </Fragment>
   );

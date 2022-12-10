@@ -10,21 +10,26 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import DescriptionTab from "../components/tabs/Tab1";
+import Product from "../components/Product/Product";
+import { grey } from "@mui/material/colors";
+import InfoTab from "../components/tabs/Tab2";
+import ReviewsTab from "../components/tabs/Tab3";
 const ItemDetails = () => {
   const { item } = useParams();
   const mainSliderImgs = Watches[item]["src"]["slider"];
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeTab, setActiveTab] = useState("description");
+  const [mouseDown, setMouseDown] = useState(false);
   const handleChange = (event, newValue) => {
     setActiveTab(newValue);
   };
-
   return (
     <Fragment>
       <Grid container py={10} justifyContent={"end"}>
         <Grid item sm={6} container>
           <Grid
+            item
             xs={2.3}
             height="fit-content"
             sx={{
@@ -36,6 +41,7 @@ const ItemDetails = () => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
+                cursor: "pointer",
               },
             }}
           >
@@ -45,10 +51,11 @@ const ItemDetails = () => {
               dots={false}
               infinite={false}
               speed={500}
-              slidesToShow={3}
+              slidesToShow={4}
               arrows={false}
               focusOnSelect
               rows={1}
+              swipeToSlide={false}
             >
               {mainSliderImgs.map((imgSrc, index) => (
                 <img src={imgSrc} key={index} alt="" draggable={false} />
@@ -59,10 +66,13 @@ const ItemDetails = () => {
             item
             xs={9.7}
             sx={{
+              cursor: mouseDown && "grabbing",
               "& *:not(img)": {
                 height: "100% !important",
               },
             }}
+            onMouseDown={() => setMouseDown(true)}
+            onMouseUp={() => setMouseDown(false)}
           >
             <Slider
               dots={false}
@@ -83,23 +93,29 @@ const ItemDetails = () => {
         <Grid
           item
           sm={5.6}
-          px="2rem"
+          px={{
+            md: 5,
+            xs: 1,
+          }}
+          pt={5}
           container
           flexDirection={"column"}
-          rowGap="2rem"
+          rowGap="3rem"
         >
-          <Box>
+          <Stack rowGap={1}>
             <Typography
               variant="h4"
               color="secondary.main"
               fontWeight={700}
               letterSpacing={-1.3}
-              fontSize="2rem"
             >
               {item}
             </Typography>
-            <Typography variant="h5" color="primary.main" fontWeight={700}>
+            <Typography variant="h4" color="primary.main" fontWeight={700}>
               £{Watches[item]["price"]}
+            </Typography>
+            <Typography variant="body2" color="grey.main" fontWeight={600}>
+              SKU: N/A
             </Typography>
             <Typography variant="body2" color="grey.main" fontWeight={600}>
               CATEGORIES: {Watches[item]["categories"].join(",")}
@@ -107,8 +123,15 @@ const ItemDetails = () => {
             <Typography variant="body2" color="grey.main" fontWeight={600}>
               TAGS: {Watches[item]["tags"].join(", ")}
             </Typography>
-          </Box>
-          <Typography variant="subtitle1" color="grey.main">
+          </Stack>
+          <Typography
+            variant="subtitle1"
+            color="grey.main"
+            width={{
+              sm: "85%",
+              xs: "auto",
+            }}
+          >
             The Grand Camel is a timepiece designed to suit the masculine and
             confident man because of its combination of thick yet smooth cognac
             coated calf leather, the stainless steel case and hands.
@@ -161,8 +184,15 @@ const ItemDetails = () => {
                 fontSize: "1rem",
               },
             }}
+            spacing={0.5}
           >
-            GET SOCIAL: <FacebookIcon /> <InstagramIcon /> <TwitterIcon />
+            GET SOCIAL:{" "}
+            <FacebookIcon
+              sx={{
+                ml: 0.5,
+              }}
+            />{" "}
+            <InstagramIcon /> <TwitterIcon />
           </Stack>
         </Grid>
       </Grid>
@@ -179,28 +209,79 @@ const ItemDetails = () => {
             <Tab
               value="description"
               sx={{
-                fontSize: "0.7rem",
+                fontSize: "0.8rem",
               }}
               label="DESCRIPTION"
             />
             <Tab
               value="info"
               sx={{
-                fontSize: "0.7rem",
+                fontSize: "0.8rem",
               }}
               label="ADDITIONAL INFORMATION"
             />
             <Tab
-              value="review"
+              value="reviews"
               sx={{
-                fontSize: "0.7rem",
+                fontSize: "0.8rem",
               }}
-              label="REVIEW"
+              label="REVIEWS(1)"
             />
           </Tabs>
         </Box>
         <Grid container pt={2}>
           {activeTab === "description" && <DescriptionTab />}
+          {activeTab === "info" && (
+            <InfoTab
+              brand={Watches[item]["brand"]}
+              manufacturer={Watches[item]["Manufacturer"]}
+              display={Watches[item]["Display"]}
+              color={Watches[item]["Color"]}
+              strapMaterial={Watches[item]["Strap Material"]}
+              waterResistance={Watches[item]["Water Resistance"]}
+              movement={Watches[item]["Movement"]}
+              alarmClock={Watches[item]["Alarm Clock"]}
+            />
+          )}
+          {activeTab === "reviews" && <ReviewsTab name={item.toLowerCase()} />}
+        </Grid>
+        <Typography
+          variant="h4"
+          fontWeight={"500"}
+          color={"secondary.main"}
+          textAlign={"center"}
+          letterSpacing={{
+            md: -1,
+            xs: "auto",
+          }}
+          fontSize={"1.9rem"}
+          my={5}
+        >
+          RECOMENDED WATCHES
+        </Typography>
+        <Grid container borderBottom={1} borderTop={1} borderColor={grey[500]}>
+          <Product
+            md={3}
+            sm={6}
+            xs={12}
+            name={"TATUM ROUND ANALOG BLUE DIAL LADIES"}
+          />
+          <Product
+            md={3}
+            sm={6}
+            xs={12}
+            name={"ROUND ANALOG WHITE & BEE DIAL LADIES"}
+            removeBorderatMediumScreen={true}
+          />
+          <Product md={3} sm={6} xs={12} name={"THE RUNWELL SPORT CHRONO"} />
+
+          <Product
+            md={3}
+            sm={6}
+            xs={12}
+            name={"THE RUNWELL SPORT CHRONO SILVER"}
+            border={false}
+          />
         </Grid>
       </Grid>
     </Fragment>

@@ -2,10 +2,11 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import TopBar from "./components/TopBar/TopBar";
 import "./App.css";
 import { grey } from "@mui/material/colors";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, ScrollRestoration } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
 import ItemDetails from "./pages/ItemDetails";
+import Shop from "./pages/Shop";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -30,6 +31,7 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:item" element={<ItemDetails />} />
         </Routes>
       </main>

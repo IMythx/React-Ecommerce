@@ -13,7 +13,13 @@ const SideBar = ({ open, close, anchor }) => {
     <Drawer open={open} onClose={close} anchor={anchor}>
       <Box
         sx={{
-          width: anchor === "left" ? 250 : 300,
+          width:
+            anchor === "left"
+              ? 250
+              : {
+                  sm: 500,
+                  xs: 300,
+                },
           "& a": {
             textDecoration: "none",
             color: "grey.main",

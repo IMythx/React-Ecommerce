@@ -10,6 +10,9 @@ import {
 } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import { grey } from "@mui/material/colors";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import InstagramIcon from "@mui/icons-material/Instagram";
 
 const DescriptionTab = () => {
   return (
@@ -21,7 +24,10 @@ const DescriptionTab = () => {
         rowGap="2rem"
         sm={6}
         xs={12}
-        px={6}
+        px={{
+          sm: 6,
+          xs: 2,
+        }}
         pt={10}
         pb={5}
         alignItems={"start"}
@@ -31,7 +37,7 @@ const DescriptionTab = () => {
         }}
         borderTop={1}
         borderBottom={1}
-        borderColor={grey[500]}
+        borderColor={`${grey[500]} !important`}
       >
         <Stack spacing={2}>
           <Typography
@@ -223,11 +229,95 @@ const DescriptionTab = () => {
         }}
         borderTop={1}
         borderBottom={1}
-        borderRight={1}
-        borderColor={grey[500]}
+        borderRight={{
+          sm: 1,
+          xs: "none",
+        }}
+        borderColor={`${grey[500]} !important`}
       >
         <img
           src="../src/assets/single-1.jpg"
+          alt=""
+          style={{
+            width: "100%",
+            minHeight: "100%",
+            objectFit: "cover",
+          }}
+        />
+      </Grid>
+      <Grid
+        item
+        sm={6}
+        xs={12}
+        order={3}
+        borderRight={{
+          sm: 1,
+          xs: "none",
+        }}
+        borderBottom={{
+          sm: 1,
+          xs: "none",
+        }}
+        borderColor={`${grey[500]} !important`}
+        container
+        flexDirection={"column"}
+        justifyContent="center"
+        px={{
+          sm: 10,
+          xs: 2,
+        }}
+        py={{
+          sm: 0,
+          xs: 4,
+        }}
+        rowGap={3}
+      >
+        <Typography variant="subtitle1" color="secondary.main" fontWeight={700}>
+          DESCRIPTION
+        </Typography>
+        <Typography variant="body1" color="grey.main">
+          With a flawlessly round and simple dial, a classy leather band and an
+          elegant casing, you have a timepiece that proves that perfection in
+          engineering not only is a possibility, but a reality.
+        </Typography>
+        <Typography variant="body1" color="grey.main">
+          It’s a functional unisex watch. it can be worn in scenarios where it
+          is likely to be splashed but not immersed in water. It can be worn
+          while washing your hands and will be fine in rain. We ship it with an
+          original box and a guarantee from the manufacturer.
+        </Typography>
+        <Stack
+          direction={"row"}
+          spacing={1}
+          sx={{
+            "& svg": {
+              cursor: "pointer",
+              transition: "200ms",
+              fontSize: "1.3rem",
+              color: "grey.main",
+              "&:hover": {
+                color: "primary.main",
+              },
+            },
+          }}
+        >
+          <FacebookIcon /> <InstagramIcon /> <TwitterIcon />
+        </Stack>
+      </Grid>
+      <Grid
+        item
+        sm={6}
+        xs={12}
+        order={4}
+        borderTop={{
+          sm: "none",
+          xs: 1,
+        }}
+        borderBottom={1}
+        borderColor={`${grey[500]} !important`}
+      >
+        <img
+          src="../src/assets/single-2.jpg"
           alt=""
           style={{
             width: "100%",
