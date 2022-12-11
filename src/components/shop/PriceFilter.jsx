@@ -1,11 +1,12 @@
 import { Slider, Box, Typography } from "@mui/material";
 import { useState } from "react";
 import { grey } from "@mui/material/colors";
-const PriceFilter = () => {
+const PriceFilter = (onChange) => {
   const [value, setValue] = useState([75, 500]);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    onChange(newValue);
   };
   return (
     <Box

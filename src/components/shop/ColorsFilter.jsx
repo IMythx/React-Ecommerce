@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-const ColorsFilter = () => {
+const ColorsFilter = ({ onChange }) => {
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (value) => () => {
@@ -24,6 +24,7 @@ const ColorsFilter = () => {
     }
 
     setChecked(newChecked);
+    onChange(newChecked);
   };
 
   return (
@@ -33,6 +34,7 @@ const ColorsFilter = () => {
           backgroundColor: "transparent",
           ml: -0.5,
           mb: 1,
+          position: "static",
         }}
       >
         <Typography

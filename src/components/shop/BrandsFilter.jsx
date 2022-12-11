@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-const BrandsFilter = ({ changeHandler }) => {
+const BrandsFilter = ({ onChange }) => {
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (value) => () => {
@@ -24,8 +24,8 @@ const BrandsFilter = ({ changeHandler }) => {
     }
 
     setChecked(newChecked);
+    onChange(newChecked);
   };
-
   return (
     <List sx={{ bgcolor: grey[100] }}>
       <ListSubheader
@@ -33,6 +33,7 @@ const BrandsFilter = ({ changeHandler }) => {
           backgroundColor: "transparent",
           ml: -0.5,
           mb: 1,
+          position: "static",
         }}
       >
         <Typography

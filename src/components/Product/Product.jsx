@@ -21,6 +21,7 @@ const Product = ({
   name,
   borderRight = true,
   removeBorderatMediumScreen = false,
+  shop = false,
 }) => {
   const theme = createTheme({
     breakpoints: {
@@ -77,7 +78,7 @@ const Product = ({
     >
       <img
         src={item.src.main}
-        style={{ width: "80%" }}
+        style={{ width: "82%" }}
         alt=""
         onClick={clickHandler}
       />

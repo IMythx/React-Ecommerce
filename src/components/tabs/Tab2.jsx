@@ -312,7 +312,7 @@ const InfoTab = ({
           </Typography>
         </Fragment>
       )}
-      {movement && (
+      {alarmClock && (
         <Fragment>
           <Typography
             pb={1.5}

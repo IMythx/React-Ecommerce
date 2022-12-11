@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState } from "react";
-const StrapFilter = () => {
+const StrapFilter = (onChange) => {
   const [checked, setChecked] = useState([]);
 
   const handleToggle = (value) => () => {
@@ -24,6 +24,7 @@ const StrapFilter = () => {
     }
 
     setChecked(newChecked);
+    onChange(newChecked);
   };
 
   return (
@@ -33,6 +34,7 @@ const StrapFilter = () => {
           backgroundColor: "transparent",
           ml: -0.5,
           mb: 1,
+          position: "static",
         }}
       >
         <Typography
