@@ -9,23 +9,33 @@ import {
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState } from "react";
-const StrapFilter = (onChange) => {
-  const [checked, setChecked] = useState([]);
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+
+const StrapFilter = ({ onChange }) => {
+  const [filters, setFilters] = useState(
+    new URLSearchParams(location.search).getAll("STRAP") || []
+  );
+
+  const navigate = useNavigate();
 
   const handleToggle = (value) => () => {
-    const currentIndex = checked.indexOf(value);
-    const newChecked = [...checked];
+    const currentIndex = filters.indexOf(value);
+    const newFilters = [...filters];
 
     if (currentIndex === -1) {
-      newChecked.push(value);
+      newFilters.push(value);
     } else {
-      newChecked.splice(currentIndex, 1);
+      newFilters.splice(currentIndex, 1);
     }
 
-    setChecked(newChecked);
-    onChange(newChecked);
+    setFilters(newFilters);
+    onChange(newFilters);
   };
+
+  useEffect(() => {
+    filters.length && onChange(filters);
+  }, []);
 
   return (
     <List sx={{ bgcolor: grey[100] }}>
@@ -79,7 +89,7 @@ const StrapFilter = (onChange) => {
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
-                    checked={checked.indexOf(value) !== -1}
+                    checked={filters.indexOf(value) !== -1}
                     tabIndex={-1}
                     disableRipple
                     inputProps={{ "aria-labelledby": labelId }}

@@ -1,17 +1,32 @@
-import { Slider, Box, Typography } from "@mui/material";
-import { useState } from "react";
+import { Slider, Box, Typography, Button, Stack } from "@mui/material";
+import { useState, useEffect } from "react";
 import { grey } from "@mui/material/colors";
-const PriceFilter = (onChange) => {
-  const [value, setValue] = useState([75, 500]);
+import { useNavigate } from "react-router-dom";
 
+const PriceFilter = ({ onChange }) => {
+  const [filters, setFilters] = useState(
+    new URLSearchParams(location.search).get("PRICE")
+      ? [
+          +new URLSearchParams(location.search).get("PRICE").split("-")[0],
+          +new URLSearchParams(location.search).get("PRICE").split("-")[1],
+        ]
+      : [75, 500]
+  );
   const handleChange = (event, newValue) => {
-    setValue(newValue);
-    onChange(newValue);
+    setFilters(newValue);
   };
+  const onClickHandler = () => {
+    onChange(filters);
+  };
+  useEffect(() => {
+    filters.length && onChange(filters);
+  }, []);
   return (
-    <Box
+    <Stack
+      alignItems={"center"}
+      rowGap={"1rem"}
+      bgcolor={grey[100]}
       sx={{
-        bgcolor: grey[100],
         "& .MuiSlider-thumb": {
           bgcolor: grey[100],
           border: 3,
@@ -31,16 +46,26 @@ const PriceFilter = (onChange) => {
       </Typography>
       <Slider
         getAriaLabel={() => "Price range"}
-        defaultValue={value}
+        value={filters}
         onChange={handleChange}
         min={75}
         max={500}
         valueLabelDisplay="auto"
       />
       <Typography color={"grey.main"} variant={"body2"} textAlign={"center"}>
-        {value.join(" - ")}
+        {filters.join(" - ")}
       </Typography>
-    </Box>
+      <Button
+        disableRipple
+        variant={"outlined"}
+        sx={{
+          width: "90%",
+        }}
+        onClick={onClickHandler}
+      >
+        FILTER
+      </Button>
+    </Stack>
   );
 };
 export default PriceFilter;

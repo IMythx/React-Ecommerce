@@ -1,19 +1,22 @@
 import { Grid, Typography, Breadcrumbs, Link } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import BrandsFilter from "../components/shop/BrandsFilter";
 import ColorsFilter from "../components/shop/ColorsFilter";
 import ItemsList from "../components/shop/ItemsList";
 import PriceFilter from "../components/shop/PriceFilter";
 import StrapFilter from "../components/shop/StrapFilter";
+import { useNavigate } from "react-router-dom";
+
 const Shop = () => {
-  const navigate = useNavigate();
   const [filters, setFilters] = useState({
     BRAND: [],
-    PRICE: "",
+    PRICE: [],
     COLOR: [],
     STRAP: [],
   });
+  const navigate = useNavigate();
+
   const onBrandsChange = (brandsFilter) => {
     setFilters(
       (prev) =>
@@ -50,17 +53,42 @@ const Shop = () => {
         })
     );
   };
+
   useEffect(() => {
-    if (filters.BRAND.length !== 0) {
-      const brandsQuery = filters.BRAND.reduce(
-        (accu, curr) => `BRAND=${accu}&` + `BRAND=${curr}`
-      );
-      navigate({
-        pathname: location.pathname,
-        search: `?${brandsQuery}`,
-      });
-    }
+    const brandsQueries =
+      filters.BRAND.length &&
+      filters.BRAND.reduce((accu, curr) => accu + `&BRAND=${curr}`);
+    const PriceQueries = filters.PRICE.length && filters.PRICE.join("-");
+    const colorsQueries =
+      filters.COLOR.length &&
+      filters.COLOR.reduce((accu, curr) => accu + `&COLOR=${curr}`);
+    const strapQueries =
+      filters.STRAP.length &&
+      filters.STRAP.reduce((accu, curr) => accu + `&STRAP=${curr}`);
+    navigate({
+      pathname: location.pathname,
+      search: `${PriceQueries ? `PRICE=${PriceQueries}` : ""}${
+        brandsQueries
+          ? PriceQueries
+            ? `&BRAND=${brandsQueries}`
+            : `BRAND=${brandsQueries}`
+          : ""
+      }${
+        colorsQueries
+          ? brandsQueries
+            ? `&COLOR=${colorsQueries}`
+            : `COLOR=${colorsQueries}`
+          : ""
+      }${
+        strapQueries
+          ? colorsQueries
+            ? `&STRAP=${strapQueries}`
+            : `STRAP=${strapQueries}`
+          : ""
+      }`,
+    });
   }, [filters]);
+
   return (
     <Grid container columnGap={0.5} rowGap={"3rem"} py={2}>
       <Grid item xs={12} container rowGap={"3rem"} flexDirection={"column"}>
