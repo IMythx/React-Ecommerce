@@ -75,13 +75,13 @@ const Shop = () => {
           : ""
       }${
         colorsQueries
-          ? brandsQueries
+          ? PriceQueries || brandsQueries
             ? `&COLOR=${colorsQueries}`
             : `COLOR=${colorsQueries}`
           : ""
       }${
         strapQueries
-          ? colorsQueries
+          ? PriceQueries || brandsQueries || colorsQueries
             ? `&STRAP=${strapQueries}`
             : `STRAP=${strapQueries}`
           : ""
@@ -149,6 +149,12 @@ const Shop = () => {
           sm: 4,
           xs: 2,
         }}
+        height="fit-content"
+        position={{
+          sm: "sticky",
+          xs: "static",
+        }}
+        top="10px"
       >
         <BrandsFilter onChange={onBrandsChange} />
         <PriceFilter onChange={onPriceChange} />

@@ -12,11 +12,11 @@ export const Watches = {
     "Strap Material": "Black Crocodile",
     "Water Resistance": "yes",
     src: {
-      main: "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-1-300x300.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Bold-Round-Analog-Gunmetal-Dial-1-300x300.jpg",
       slider: [
-        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-1.jpg",
-        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-2.jpg",
-        "../src/assets/item1/Bold-Round-Analog-Gunmetal-Dial-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Bold-Round-Analog-Gunmetal-Dial-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Bold-Round-Analog-Gunmetal-Dial-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Bold-Round-Analog-Gunmetal-Dial-2.jpg",
       ],
     },
   },
@@ -32,8 +32,10 @@ export const Watches = {
     Display: "Digital",
     "Water Resistance": "yes",
     src: {
-      main: "../src/assets/item2/Dapper-Round-Analog-300x300.jpg",
-      slider: ["../src/assets/item2/Dapper-Round-Analog.jpg"],
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Dapper-Round-Analog-300x300.jpg",
+      slider: [
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Dapper-Round-Analog.jpg",
+      ],
     },
   },
   "ROUND ANALOG WHITE & BEE DIAL LADIES": {
@@ -48,11 +50,11 @@ export const Watches = {
     Display: "Analog and Digital",
     "Water Resistance": "yes",
     src: {
-      main: "../src/assets/item3/Round-Analog-White-Bee-Dial-Ladies-2-300x300.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Bee-Dial-Ladies-2-300x300.jpg",
       slider: [
-        "../src/assets/item3/Round-Analog-White-Bee-Dial-Ladies-2.jpg",
-        "../src/assets/item3/Round-Analog-White-Bee-Dial-Ladies-3.jpg",
-        "../src/assets/item3/Round-Analog-White-Bee-Dial-Ladies-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Bee-Dial-Ladies-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Bee-Dial-Ladies-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Bee-Dial-Ladies-1.jpg",
       ],
     },
   },
@@ -69,11 +71,11 @@ export const Watches = {
     "Water Resistance": "yes",
     "Alarm Clock": "no",
     src: {
-      main: "../src/assets/item4/Round-Analog-White-Dial-Ladies-2-300x300.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Dial-Ladies-2-300x300.jpg",
       slider: [
-        "../src/assets/item4/Round-Analog-White-Dial-Ladies-2.jpg",
-        "../src/assets/item4/Round-Analog-White-Dial-Ladies-3.jpg",
-        "../src/assets/item4/Round-Analog-White-Dial-Ladies-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Dial-Ladies-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Dial-Ladies-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Round-Analog-White-Dial-Ladies-1.jpg",
       ],
     },
   },
@@ -87,12 +89,12 @@ export const Watches = {
     "Strap Material": "Black Crocodile",
     Display: "Binary",
     src: {
-      main: "../src/assets/item5/THE-RUNWELL-SPORT-CHRONO-SilverGold-2-300x300.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-SilverGold-2-300x300.jpg",
       slider: [
-        "../src/assets/item5/THE-RUNWELL-SPORT-CHRONO-SilverGold-2.jpg",
-        "../src/assets/item5/THE-RUNWELL-SPORT-CHRONO-SilverGold-4.jpg",
-        "../src/assets/item5/THE-RUNWELL-SPORT-CHRONO-SilverGold-3.jpg",
-        "../src/assets/item5/THE-RUNWELL-SPORT-CHRONO-SilverGold-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-SilverGold-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-SilverGold-4.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-SilverGold-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-SilverGold-1.jpg",
       ],
     },
     "Alarm Clock": "yes",
@@ -110,8 +112,10 @@ export const Watches = {
     "Water Resistance": "no",
     "Alarm Clock": "no",
     src: {
-      main: "../src/assets/item6/Tatum-Round-Analog-Blue-Dial-Ladies-300x300.jpg",
-      slider: ["../src/assets/item6/Tatum-Round-Analog-Blue-Dial-Ladies.jpg"],
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Tatum-Round-Analog-Blue-Dial-Ladies-300x300.jpg",
+      slider: [
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/Tatum-Round-Analog-Blue-Dial-Ladies.jpg",
+      ],
     },
     "Alarm Clock": "yes",
   },
@@ -128,10 +132,10 @@ export const Watches = {
     "Water Resistance": "no",
     "Alarm Clock": "no",
     src: {
-      main: "../src/assets/item7/THE-RUNWELL-SPORT-CHRONO-2-300x300.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-2.jpg",
       slider: [
-        "../src/assets/item7/THE-RUNWELL-SPORT-CHRONO-2.jpg",
-        "../src/assets/item7/THE-RUNWELL-SPORT-CHRONO-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO-1.jpg",
       ],
     },
   },
@@ -146,11 +150,11 @@ export const Watches = {
     Display: "Binary",
     "Alarm Clock": "yes",
     src: {
-      main: "../src/assets/item8/THE-BEDROCK-CHRONO.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-BEDROCK-CHRONO-2.jpg",
       slider: [
-        "../src/assets/item8/THE-BEDROCK-CHRONO-2.jpg",
-        "../src/assets/item8/THE-BEDROCK-CHRONO-3.jpg",
-        "../src/assets/item8/THE-BEDROCK-CHRONO-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-BEDROCK-CHRONO-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-BEDROCK-CHRONO-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-BEDROCK-CHRONO-1.jpg",
       ],
     },
   },
@@ -166,10 +170,10 @@ export const Watches = {
     "Strap Material": "Brown Crocodile",
     "Alarm Clock": "yes",
     src: {
-      main: "../src/assets/item9/THE-CANFIELD-SPORT.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-CANFIELD-SPORT-2.jpg",
       slider: [
-        "../src/assets/item9/THE-CANFIELD-SPORT-2.jpg",
-        "../src/assets/item9/THE-CANFIELD-SPORT-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-CANFIELD-SPORT-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-CANFIELD-SPORT-1.jpg",
       ],
     },
   },
@@ -184,10 +188,10 @@ export const Watches = {
     "Strap Material": "Aluminum",
     "Alarm Clock": "yes",
     src: {
-      main: "../src/assets/item10/THE-LAKE-MICHIGAN-MONSTER.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-2.jpg",
       slider: [
-        "../src/assets/item10/THE-LAKE-MICHIGAN-MONSTER-2.jpg",
-        "../src/assets/item10/THE-LAKE-MICHIGAN-MONSTER-1.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-2.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-1.jpg",
       ],
     },
   },
@@ -202,10 +206,10 @@ export const Watches = {
     "Alarm Clock": "yes",
     color: "black",
     src: {
-      main: "../src/assets/item11/THE-LAKE-MICHIGAN-MONSTER.jpg",
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-3.jpg",
       slider: [
-        "../src/assets/item11/THE-LAKE-MICHIGAN-MONSTER-3.jpg.jpg",
-        "../src/assets/item11/THE-LAKE-MICHIGAN-MONSTER-4.jpg.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-3.jpg",
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-LAKE-MICHIGAN-MONSTER-4.jpg",
       ],
     },
   },
@@ -221,8 +225,10 @@ export const Watches = {
     "Water Resistance": "yes",
     color: "black",
     src: {
-      main: "../src/assets/item12/THE-RUNWELL-SPORT-CHRONO-1.jpg",
-      slider: ["../src/assets/item12/THE-RUNWELL-SPORT-CHRONO.jpg.jpg"],
+      main: "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO.jpg",
+      slider: [
+        "https://ld-wp73.template-help.com/woostroid2/skins/watchstore/wp-content/uploads/2019/06/THE-RUNWELL-SPORT-CHRONO.jpg",
+      ],
     },
   },
 };

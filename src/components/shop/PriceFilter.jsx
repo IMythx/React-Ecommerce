@@ -1,7 +1,6 @@
 import { Slider, Box, Typography, Button, Stack } from "@mui/material";
 import { useState, useEffect } from "react";
 import { grey } from "@mui/material/colors";
-import { useNavigate } from "react-router-dom";
 
 const PriceFilter = ({ onChange }) => {
   const [filters, setFilters] = useState(
@@ -19,7 +18,7 @@ const PriceFilter = ({ onChange }) => {
     onChange(filters);
   };
   useEffect(() => {
-    filters.length && onChange(filters);
+    filters[0] !== 75 || (filters[1] !== 500 && onChange(filters));
   }, []);
   return (
     <Stack

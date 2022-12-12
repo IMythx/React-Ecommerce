@@ -10,14 +10,11 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const StrapFilter = ({ onChange }) => {
   const [filters, setFilters] = useState(
     new URLSearchParams(location.search).getAll("STRAP") || []
   );
-
-  const navigate = useNavigate();
 
   const handleToggle = (value) => () => {
     const currentIndex = filters.indexOf(value);
