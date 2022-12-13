@@ -7,7 +7,8 @@ import ItemsList from "../components/shop/ItemsList";
 import PriceFilter from "../components/shop/PriceFilter";
 import StrapFilter from "../components/shop/StrapFilter";
 import { useNavigate } from "react-router-dom";
-
+import { shopActions } from "../Store/shopSlice";
+import { useDispatch } from "react-redux";
 const Shop = () => {
   const [filters, setFilters] = useState({
     BRAND: [],
@@ -15,6 +16,7 @@ const Shop = () => {
     COLOR: [],
     STRAP: [],
   });
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onBrandsChange = (brandsFilter) => {
@@ -26,12 +28,12 @@ const Shop = () => {
         })
     );
   };
-  const onPriceChange = (priceFilter) => {
+  const onPriceChange = (priceFilters) => {
     setFilters(
       (prev) =>
         (prev = {
           ...prev,
-          PRICE: priceFilter,
+          PRICE: priceFilters,
         })
     );
   };
@@ -87,6 +89,7 @@ const Shop = () => {
           : ""
       }`,
     });
+    dispatch(shopActions.filter());
   }, [filters]);
 
   return (

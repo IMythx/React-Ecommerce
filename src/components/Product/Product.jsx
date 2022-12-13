@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Watches } from "../../Store/Watches";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -21,7 +21,6 @@ const Product = ({
   name,
   borderRight = true,
   removeBorderatMediumScreen = false,
-  shop = false,
 }) => {
   const theme = createTheme({
     breakpoints: {
@@ -35,6 +34,9 @@ const Product = ({
     },
   });
   const [isHovered, setIsHovered] = useState(false);
+  const [isTablet, setIsTablet] = useState(
+    window.matchMedia("(max-width:899px)").matches
+  );
   const item = Watches[name];
   const navigate = useNavigate();
   const clickHandler = () => navigate(`/shop/${name}`);
@@ -44,6 +46,13 @@ const Product = ({
     bottom:10%
   }
   `;
+  useEffect(
+    () =>
+      window
+        .matchMedia("(max-width:899px)")
+        .addEventListener("change", (e) => setIsTablet(e.matches)),
+    []
+  );
   return (
     <Grid
       md={md && md}
@@ -61,7 +70,7 @@ const Product = ({
         }
       }
       position={"relative"}
-      onMouseOver={() => setIsHovered(true)}
+      onMouseOver={() => !isTablet && setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
       sx={{
         cursor: "pointer",
@@ -77,7 +86,7 @@ const Product = ({
       }
     >
       <img
-        src={item.src.main}
+        src={item["src"][0]}
         style={{ width: "82%" }}
         alt=""
         onClick={clickHandler}
@@ -88,28 +97,46 @@ const Product = ({
           color={"secondary.main"}
           textAlign={"center"}
           position={"absolute"}
-          width={"100%"}
+          width={{
+            md: "100%",
+            sm: "55%",
+            xs: "100%",
+          }}
+          whiteSpace={{
+            md: "initial",
+            sm: "nowrap",
+            xs: "initial",
+          }}
+          overflow={{
+            md: "initial",
+            sm: "hidden",
+            xs: "initial",
+          }}
+          textOverflow={"ellipsis"}
           bottom={"15%"}
           fontWeight={700}
           sx={{
-            opacity: "0",
-            animation: `${raise} 300ms linear 1 forwards`,
+            opacity: !isTablet && "0",
+            animation: !isTablet && `${raise} 300ms linear 1 forwards`,
           }}
         >
           {name} <br /> £{item.price}
         </Typography>
       )}
-      {isHovered && (
+      {(isHovered || isTablet) && (
         <Stack
           direction={"row"}
           position={"absolute"}
           columnGap="1rem"
           width={"100%"}
-          bottom={"0%"}
+          bottom={{
+            md: "0%",
+            xs: "3%",
+          }}
           justifyContent={"center"}
           sx={{
-            opacity: "0",
-            animation: `${raise} 300ms linear 1 forwards`,
+            opacity: !isTablet && "0",
+            animation: !isTablet && `${raise} 300ms linear 1 forwards`,
           }}
         >
           <Button
@@ -118,6 +145,7 @@ const Product = ({
             sx={{
               color: "secondary.main",
               px: 2,
+              borderRadius: "0",
               backgroundColor: "transparent",
               whiteSpace: "nowrap",
               columnGap: "0.7rem",
@@ -137,6 +165,7 @@ const Product = ({
             sx={{
               color: "secondary.main",
               px: 2,
+              borderRadius: "0",
               backgroundColor: "transparent",
               border: 1,
               borderColor: grey[500],

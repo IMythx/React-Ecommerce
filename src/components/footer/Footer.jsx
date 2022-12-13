@@ -13,7 +13,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import { grey } from "@mui/material/colors";
 import { Link as RouterLink } from "react-router-dom";
-import { bgcolor, style } from "@mui/system";
+
 const Footer = () => {
   return (
     <footer>
@@ -179,12 +179,17 @@ const Footer = () => {
         <Grid
           item
           md={3}
-          sm={4}
+          sm={6}
           xs={12}
           container
           justifyContent={{
-            sm: "center",
+            md: "center",
             xs: "start",
+          }}
+          pl={{
+            md: 0,
+            sm: 2,
+            xs: 0,
           }}
         >
           <List>
@@ -295,11 +300,11 @@ const Footer = () => {
         <Grid
           item
           md={3}
-          sm={4}
+          sm={6}
           xs={12}
           container
           justifyContent={{
-            sm: "center",
+            md: "center",
             xs: "start",
           }}
         >
@@ -438,12 +443,17 @@ const Footer = () => {
         <Grid
           item
           md={3}
-          sm={4}
+          sm={6}
           xs={12}
           container
           justifyContent={{
-            sm: "center",
+            md: "center",
             xs: "start",
+          }}
+          pl={{
+            md: 0,
+            sm: 2,
+            xs: 0,
           }}
         >
           <List>
@@ -558,17 +568,12 @@ const Footer = () => {
         <Grid
           item
           md={3}
-          sm={4}
+          sm={6}
           xs={12}
           container
           justifyContent={{
             md: "center",
             xs: "start",
-          }}
-          pl={{
-            md: 0,
-            sm: "6vw",
-            xs: 0,
           }}
         >
           <List>

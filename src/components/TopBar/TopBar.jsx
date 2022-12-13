@@ -46,7 +46,7 @@ const TopBar = () => {
     window
       .matchMedia("(max-width:768px)")
       .addEventListener("change", (e) => setIsMobile(e.matches));
-  });
+  }, []);
   return (
     <AppBar
       sx={{

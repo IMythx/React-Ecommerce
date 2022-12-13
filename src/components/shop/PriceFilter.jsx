@@ -1,4 +1,4 @@
-import { Slider, Box, Typography, Button, Stack } from "@mui/material";
+import { Slider, Typography, Button, Stack } from "@mui/material";
 import { useState, useEffect } from "react";
 import { grey } from "@mui/material/colors";
 
@@ -18,7 +18,7 @@ const PriceFilter = ({ onChange }) => {
     onChange(filters);
   };
   useEffect(() => {
-    filters[0] !== 75 || (filters[1] !== 500 && onChange(filters));
+    (filters[0] !== 75 || filters[1] !== 500) && onChange(filters);
   }, []);
   return (
     <Stack

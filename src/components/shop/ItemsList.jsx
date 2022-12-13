@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import Product from "../Product/Product";
 import { useSelector } from "react-redux";
@@ -15,31 +15,55 @@ const ItemsList = () => {
         sm: 1,
         xs: "none",
       }}
-      borderTop={1}
       borderColor={`${grey[500]} !important`}
+      height={"fit-content"}
     >
-      {watches.map((item, index) => (
-        <Grid
-          key={index}
-          item
-          md={4}
-          sm={6}
-          xs={12}
-          borderRight={{
-            sm: 1,
-            xs: "none",
-          }}
-          borderBottom={1}
-          borderColor={`${grey[500]} !important`}
-        >
-          <Product
-            borderBottom={false}
-            borderRight={false}
+      {watches.map((item, index) => {
+        return index >= 0 && index <= 2 ? (
+          <Grid
+            key={index}
+            item
+            md={4}
+            sm={6}
             xs={12}
-            name={item}
-          />
-        </Grid>
-      ))}
+            borderRight={{
+              sm: 1,
+              xs: "none",
+            }}
+            borderBottom={1}
+            borderTop={1}
+            borderColor={`${grey[500]} !important`}
+          >
+            <Product
+              borderBottom={false}
+              borderRight={false}
+              xs={12}
+              name={item}
+            />
+          </Grid>
+        ) : (
+          <Grid
+            key={index}
+            item
+            md={4}
+            sm={6}
+            xs={12}
+            borderRight={{
+              sm: 1,
+              xs: "none",
+            }}
+            borderBottom={1}
+            borderColor={`${grey[500]} !important`}
+          >
+            <Product
+              borderBottom={false}
+              borderRight={false}
+              xs={12}
+              name={item}
+            />
+          </Grid>
+        );
+      })}
     </Grid>
   );
 };

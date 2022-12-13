@@ -16,7 +16,7 @@ import InfoTab from "../components/tabs/Tab2";
 import ReviewsTab from "../components/tabs/Tab3";
 const ItemDetails = () => {
   const { item } = useParams();
-  const mainSliderImgs = Watches[item]["src"]["slider"];
+  const imgsSrc = Watches[item]["src"];
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeTab, setActiveTab] = useState("description");
@@ -57,7 +57,7 @@ const ItemDetails = () => {
               rows={1}
               swipeToSlide={false}
             >
-              {mainSliderImgs.map((imgSrc, index) => (
+              {imgsSrc.map((imgSrc, index) => (
                 <img src={imgSrc} key={index} alt="" draggable={false} />
               ))}
             </Slider>
@@ -84,7 +84,7 @@ const ItemDetails = () => {
               asNavFor={nav2}
               ref={(slider1) => setNav1(slider1)}
             >
-              {mainSliderImgs.map((imgSrc, index) => (
+              {imgsSrc.map((imgSrc, index) => (
                 <img src={imgSrc} key={index} alt="" />
               ))}
             </Slider>
@@ -148,6 +148,7 @@ const ItemDetails = () => {
               variant="text"
               sx={{
                 color: "#fff",
+                borderRadius: "0",
                 px: 2,
                 backgroundColor: "primary.main",
                 whiteSpace: "nowrap",
@@ -164,6 +165,7 @@ const ItemDetails = () => {
               variant="text"
               sx={{
                 color: "secondary.main",
+                borderRadius: "0",
                 px: 2,
                 backgroundColor: "transparent",
                 "&:hover": {
@@ -178,13 +180,17 @@ const ItemDetails = () => {
             direction={"row"}
             alignItems="center"
             color="grey.main"
-            fontSize={"0.4rem"}
+            fontSize={"0.9rem"}
             sx={{
               "& svg": {
+                cursor: "pointer",
                 fontSize: "1rem",
+                ":hover": {
+                  color: "primary.main",
+                },
               },
             }}
-            spacing={0.5}
+            spacing={1}
           >
             GET SOCIAL:{" "}
             <FacebookIcon
@@ -236,7 +242,7 @@ const ItemDetails = () => {
               brand={Watches[item]["brand"]}
               manufacturer={Watches[item]["Manufacturer"]}
               display={Watches[item]["Display"]}
-              color={Watches[item]["Color"]}
+              color={Watches[item]["color"]}
               strapMaterial={Watches[item]["Strap Material"]}
               waterResistance={Watches[item]["Water Resistance"]}
               movement={Watches[item]["Movement"]}
