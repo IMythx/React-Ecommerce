@@ -84,7 +84,7 @@ const Footer = () => {
             disableRipple
             sx={{
               borderRadius: "0",
-              width: { md: "25%", sm: "10%", xs: "100%" },
+              width: { md: "25%", sm: "14%", xs: "100%" },
               borderColor: grey[500],
               color: "#eee",
               backgroundColor: "secondary.main",

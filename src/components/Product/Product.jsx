@@ -7,11 +7,14 @@ import {
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { Watches } from "../../Store/Watches";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { cartActions } from "../../Store/cartSlice";
+import CheckIcon from "@mui/icons-material/Check";
 
 const Product = ({
   md,
@@ -37,9 +40,14 @@ const Product = ({
   const [isTablet, setIsTablet] = useState(
     window.matchMedia("(max-width:899px)").matches
   );
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
   const item = Watches[name];
+  const isInCart = cart.indexOf(name) !== -1;
   const navigate = useNavigate();
   const clickHandler = () => navigate(`/shop/${name}`);
+  const onAddHandler = () =>
+    dispatch(cartActions.addItem({ name, price: +item.price }));
   const raise = keyframes`
   to{
     opacity:1;
@@ -143,21 +151,42 @@ const Product = ({
             disableRipple
             variant="text"
             sx={{
-              color: "secondary.main",
+              color: isInCart ? "#fff" : "secondary.main",
               px: 2,
               borderRadius: "0",
-              backgroundColor: "transparent",
+              backgroundColor: isInCart ? "secondary.main" : "transparent",
               whiteSpace: "nowrap",
-              columnGap: "0.7rem",
+              columnGap: !isInCart && "0.7rem",
               border: 1,
-              borderColor: grey[500],
+              borderColor: "secondary.main",
+              fontSize: {
+                md: "0.85rem",
+                sm: "0.5rem",
+                xs: "0.85rem",
+              },
               "&:hover": {
                 backgroundColor: "secondary.main",
                 color: "#fff",
               },
             }}
+            onClick={onAddHandler}
           >
-            <ShoppingCartOutlinedIcon /> ADD TO CART
+            {!isInCart && (
+              <Fragment>
+                <ShoppingCartOutlinedIcon
+                  sx={{ fontSize: { md: "1.5rem", sm: "1rem", xs: "1.5rem" } }}
+                />
+                ADD TO CART
+              </Fragment>
+            )}
+            {isInCart && (
+              <Fragment>
+                <CheckIcon
+                  sx={{ fontSize: { md: "1.5rem", sm: "1rem", xs: "1.5rem" } }}
+                />
+                ADDED
+              </Fragment>
+            )}
           </Button>
           <Button
             disableRipple
@@ -167,15 +196,24 @@ const Product = ({
               px: 2,
               borderRadius: "0",
               backgroundColor: "transparent",
+              minWidth: "auto",
               border: 1,
-              borderColor: grey[500],
+              borderColor: "secondary.main",
               "&:hover": {
                 backgroundColor: "secondary.main",
                 color: "#fff",
               },
             }}
           >
-            <FavoriteBorderOutlinedIcon />
+            <FavoriteBorderOutlinedIcon
+              sx={{
+                fontSize: {
+                  md: "1.5rem",
+                  sm: "1rem",
+                  xs: "1.5rem",
+                },
+              }}
+            />
           </Button>
         </Stack>
       )}

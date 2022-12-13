@@ -16,40 +16,40 @@ const shopSlice = createSlice({
   initialState,
   reducers: {
     filter(state, action) {
-      const brandsQueries = new URLSearchParams(location.search).getAll(
+      const brandsFilters = new URLSearchParams(location.search).getAll(
         "BRAND"
       );
-      const priceQueries =
+      const priceFilters =
         new URLSearchParams(location.search).getAll("PRICE").length &&
         new URLSearchParams(location.search).getAll("PRICE")[0].split("-");
-      const colorsQueries = new URLSearchParams(location.search).getAll(
+      const colorsFilters = new URLSearchParams(location.search).getAll(
         "COLOR"
       );
-      const strapQueries = new URLSearchParams(location.search).getAll("STRAP");
+      const strapFilters = new URLSearchParams(location.search).getAll("STRAP");
       let filteredItems = [...initialState.watches];
 
-      brandsQueries.length &&
+      brandsFilters.length &&
         (filteredItems = filteredItems.filter(
           (item) =>
-            brandsQueries.indexOf(Watches[item]["brand"].toUpperCase()) !== -1
+            brandsFilters.indexOf(Watches[item]["brand"].toUpperCase()) !== -1
         ));
 
-      priceQueries.length &&
+      priceFilters.length &&
         (filteredItems = filteredItems.filter(
           (item) =>
-            +Watches[item]["price"] >= +priceQueries[0] &&
-            +Watches[item]["price"] <= +priceQueries[1]
+            +Watches[item]["price"] >= +priceFilters[0] &&
+            +Watches[item]["price"] <= +priceFilters[1]
         ));
 
-      colorsQueries.length &&
+      colorsFilters.length &&
         (filteredItems = filteredItems.filter(
-          (item) => colorsFilterHelper(colorsQueries, item) !== false
+          (item) => colorsFilterHelper(colorsFilters, item) !== false
         ));
 
-      strapQueries.length &&
+      strapFilters.length &&
         (filteredItems = filteredItems.filter(
           (item) =>
-            strapQueries.indexOf(
+            strapFilters.indexOf(
               Watches[item]["Strap Material"].toUpperCase()
             ) !== -1
         ));
