@@ -12,7 +12,7 @@ const cartSlice = createSlice({
     },
 
     removeItem(state, action) {
-      state.cart.filter((item) => item !== action.payload.name);
+      state.cart = state.cart.filter((item) => item !== action.payload.name);
       state.totalPrice = state.totalPrice - action.payload.price;
     },
   },

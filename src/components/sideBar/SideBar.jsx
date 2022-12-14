@@ -8,6 +8,7 @@ import {
   ListItemText,
   ListItemIcon,
   Link,
+  Stack,
 } from "@mui/material";
 import { Link as RouterLink, NavLink } from "react-router-dom";
 import CloseIcon from "@mui/icons-material/Close";
@@ -16,11 +17,15 @@ import { cartActions } from "../../Store/cartSlice";
 import { grey } from "@mui/material/colors";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import { Watches } from "../../Store/Watches";
+import { Fragment } from "react";
+
 const SideBar = ({ open, close, anchor }) => {
   const { cart, totalPrice } = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
   return (
-    <Drawer open={open} onClose={close} anchor={anchor}>
+    <Drawer open={open} onClose={anchor === "left" && close} anchor={anchor}>
       <Box
         sx={{
           width:
@@ -39,8 +44,6 @@ const SideBar = ({ open, close, anchor }) => {
           },
         }}
         role="presentation"
-        onClick={close}
-        onKeyDown={close}
       >
         {anchor === "left" && (
           <List>
@@ -75,115 +78,177 @@ const SideBar = ({ open, close, anchor }) => {
               >
                 Cart
               </ListItemText>
-              <CloseIcon
+              <ListItemIcon
                 sx={{
+                  minWidth: "fit-content",
                   cursor: "pointer",
                 }}
                 onClick={close}
-              />
-            </ListItem>
-            <ListItem disablePadding>
-              <List
-                sx={{
-                  borderBottom: 1,
-                  borderColor: `${grey[300]} !important`,
-                  width: "100%",
-                }}
-              ></List>
-            </ListItem>
-            <ListItem>
-              <ListItemText disableTypography>
-                <Typography
-                  variant="subtitle1"
-                  color={grey[600]}
-                  fontWeight={800}
-                >
-                  Subtotal:
-                  <Typography
-                    ml={"0.5rem"}
-                    component={"span"}
-                    color={"grey.main"}
-                  >
-                    £{totalPrice}
-                  </Typography>
-                </Typography>
-              </ListItemText>
-            </ListItem>
-            <ListItem
-              sx={{
-                px: 15,
-              }}
-            >
-              <Link
-                component={RouterLink}
-                to="/cart"
-                underline="none"
-                width={"100%"}
               >
-                <ListItemButton
-                  sx={{
-                    borderRadius: 1,
-                    columnGap: "0.5rem",
-                    justifyContent: "center",
-                    color: "#fff",
-                    bgcolor: "#27d18b",
-                    "&:hover": {
-                      bgcolor: "#78e6b9",
-                    },
-                  }}
-                  disableRipple
-                >
-                  <ListItemIcon
+                <CloseIcon />
+              </ListItemIcon>
+            </ListItem>
+            {cart.length > 0 && (
+              <Fragment>
+                <ListItem disablePadding onClick={(e) => e.preventDefault()}>
+                  <List
                     sx={{
-                      minWidth: "fit-content",
-                      color: "#fff",
+                      borderBottom: 1,
+                      borderColor: `${grey[300]} !important`,
+                      width: "100%",
                     }}
                   >
-                    <ShoppingCartOutlinedIcon />
-                  </ListItemIcon>
-                  Checkout
-                </ListItemButton>
-              </Link>
-            </ListItem>
-            <ListItem
-              sx={{
-                px: 15,
-              }}
-            >
-              <Link
-                component={RouterLink}
-                to="/cart"
-                underline="none"
-                width={"100%"}
-              >
-                <ListItemButton
+                    {cart.map((item, index) => (
+                      <ListItem key={index}>
+                        <Stack direction="row" width={"100%"}>
+                          <Box maxWidth={"80px"}>
+                            <img
+                              src={Watches[item]["src"][0]}
+                              style={{
+                                maxWidth: "100%",
+                              }}
+                            />
+                          </Box>
+                          <Stack rowGap={"1rem"} justifyContent={"center"}>
+                            <Typography
+                              color="primary.main"
+                              variant="subtitle1"
+                            >
+                              {item}
+                            </Typography>
+                            <Typography color="grey.main" variant="subtitle1">
+                              1x £{Watches[item]["price"]}
+                            </Typography>
+                          </Stack>
+                          <ListItemIcon
+                            sx={{
+                              minWidth: "fit-content",
+                              cursor: "pointer",
+                              ml: "auto",
+                            }}
+                            onClick={() =>
+                              dispatch(
+                                cartActions.removeItem({
+                                  name: item,
+                                  price: +Watches[item]["price"],
+                                })
+                              )
+                            }
+                          >
+                            <CloseIcon />
+                          </ListItemIcon>
+                        </Stack>
+                      </ListItem>
+                    ))}
+                  </List>
+                </ListItem>
+                <ListItem>
+                  <ListItemText disableTypography>
+                    <Typography
+                      variant="subtitle1"
+                      color={grey[600]}
+                      fontWeight={800}
+                    >
+                      Subtotal:
+                      <Typography
+                        ml={"0.5rem"}
+                        component={"span"}
+                        color={"grey.main"}
+                      >
+                        £{totalPrice}
+                      </Typography>
+                    </Typography>
+                  </ListItemText>
+                </ListItem>
+                <ListItem
                   sx={{
-                    fontSize: "0.8rem",
-                    columnGap: "0.5rem",
-                    justifyContent: "center",
-                    color: "primary.main",
-                    "&:hover": {
-                      bgcolor: "transparent",
-                    },
+                    px: 15,
                   }}
-                  disableRipple
+                  onClick={close}
                 >
-                  <ListItemIcon
-                    sx={{
-                      minWidth: "fit-content",
-                      color: "primary.main",
-                    }}
+                  <Link
+                    component={RouterLink}
+                    to="/cart"
+                    underline="none"
+                    width={"100%"}
                   >
-                    <VisibilityIcon
+                    <ListItemButton
                       sx={{
-                        fontSize: "1.1rem ",
+                        borderRadius: 1,
+                        columnGap: "0.5rem",
+                        justifyContent: "center",
+                        color: "#fff",
+                        bgcolor: "#27d18b",
+                        "&:hover": {
+                          bgcolor: "#78e6b9",
+                        },
                       }}
-                    />
-                  </ListItemIcon>
-                  View cart
-                </ListItemButton>
-              </Link>
-            </ListItem>
+                      disableRipple
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: "fit-content",
+                          color: "#fff",
+                        }}
+                      >
+                        <ShoppingCartOutlinedIcon />
+                      </ListItemIcon>
+                      Checkout
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+                <ListItem
+                  sx={{
+                    px: 15,
+                  }}
+                  onClick={close}
+                >
+                  <Link
+                    component={RouterLink}
+                    to="/cart"
+                    underline="none"
+                    width={"100%"}
+                  >
+                    <ListItemButton
+                      sx={{
+                        fontSize: "0.8rem",
+                        columnGap: "0.5rem",
+                        justifyContent: "center",
+                        color: "primary.main",
+                        "&:hover": {
+                          bgcolor: "transparent",
+                        },
+                      }}
+                      disableRipple
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: "fit-content",
+                          color: "primary.main",
+                        }}
+                      >
+                        <VisibilityIcon
+                          sx={{
+                            fontSize: "1.1rem ",
+                          }}
+                        />
+                      </ListItemIcon>
+                      View cart
+                    </ListItemButton>
+                  </Link>
+                </ListItem>
+              </Fragment>
+            )}
+            {cart.length === 0 && (
+              <ListItem>
+                <ListItemText
+                  disableTypography
+                  sx={{ color: "grey.main", fontSize: "1.2rem" }}
+                >
+                  No products in the cart.
+                </ListItemText>
+              </ListItem>
+            )}
           </List>
         )}
       </Box>

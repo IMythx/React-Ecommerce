@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import { useSelector } from "react-redux";
 import SideBar from "../sideBar/SideBar";
 const TopBar = () => {
   const [isTablet, setIsTablet] = useState(
@@ -27,6 +28,7 @@ const TopBar = () => {
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
+  const { cart } = useSelector((state) => state.cart);
   const [sideBar, setSideBar] = useState({
     open: false,
     side: "left",
@@ -94,6 +96,7 @@ const TopBar = () => {
                 <Typography
                   variant="subtitle2"
                   color={"gray.main"}
+                  fontWeight={600}
                   fontSize={12}
                 >
                   HOME
@@ -106,6 +109,7 @@ const TopBar = () => {
                 <Typography
                   variant="subtitle2"
                   color={"gray.main"}
+                  fontWeight={600}
                   fontSize={12}
                 >
                   ABOUT
@@ -118,6 +122,7 @@ const TopBar = () => {
                 <Typography
                   variant="subtitle2"
                   color={"gray.main"}
+                  fontWeight={600}
                   fontSize={12}
                 >
                   DELIVERY
@@ -131,6 +136,7 @@ const TopBar = () => {
                 <Typography
                   variant="subtitle2"
                   color={"gray.main"}
+                  fontWeight={600}
                   fontSize={12}
                 >
                   CONTACTS
@@ -181,7 +187,12 @@ const TopBar = () => {
               alignItems={"center"}
             >
               <PhoneAndroidIcon />
-              <Link href="tel:+1(234)56789" underline="none" fontSize={12}>
+              <Link
+                href="tel:+1(234)56789"
+                underline="none"
+                fontSize={12}
+                fontWeight={600}
+              >
                 +1(234)56789
               </Link>
             </Grid>
@@ -192,6 +203,7 @@ const TopBar = () => {
                 flex={1}
                 color="primary.main"
                 textAlign={"center"}
+                fontWeight={600}
                 sx={{
                   cursor: "pointer",
                 }}
@@ -224,6 +236,7 @@ const TopBar = () => {
                   <Typography
                     variant="subtitle2"
                     color={"gray.main"}
+                    fontWeight={600}
                     fontSize={11}
                   >
                     LOGIN
@@ -237,6 +250,7 @@ const TopBar = () => {
                   <Typography
                     variant="subtitle2"
                     color={"gray.main"}
+                    fontWeight={600}
                     fontSize={11}
                   >
                     REGISTER
@@ -300,6 +314,7 @@ const TopBar = () => {
                   <Typography
                     variant="subtitle2"
                     color={"gray.main"}
+                    fontWeight={600}
                     fontSize={11}
                   >
                     LOGIN
@@ -313,6 +328,7 @@ const TopBar = () => {
                   <Typography
                     variant="subtitle2"
                     color={"gray.main"}
+                    fontWeight={600}
                     fontSize={11}
                   >
                     REGISTER
@@ -331,6 +347,7 @@ const TopBar = () => {
           textAlign={"center"}
           borderBottom={1}
           borderColor={grey[500]}
+          fontWeight={600}
           py={"0.5rem"}
           sx={{
             cursor: "pointer",
@@ -377,8 +394,9 @@ const TopBar = () => {
               color="secondary.main"
               fontSize={{
                 md: 12,
-                xs: 7,
+                xs: 9,
               }}
+              fontWeight={600}
             >
               SEARCH
             </Typography>
@@ -406,8 +424,9 @@ const TopBar = () => {
                 color={"secondary.main"}
                 fontSize={{
                   md: 14,
-                  xs: 8,
+                  xs: 10,
                 }}
+                fontWeight={600}
                 sx={{
                   transition: "200ms",
                   ":hover": {
@@ -422,9 +441,10 @@ const TopBar = () => {
               <Typography
                 variant="subtitle2"
                 color={"secondary.main"}
+                fontWeight={600}
                 fontSize={{
                   md: 14,
-                  xs: 8,
+                  xs: 10,
                 }}
                 sx={{
                   transition: "200ms",
@@ -440,9 +460,10 @@ const TopBar = () => {
               <Typography
                 variant="subtitle2"
                 color={"secondary.main"}
+                fontWeight={600}
                 fontSize={{
                   md: 14,
-                  xs: 8,
+                  xs: 10,
                 }}
                 sx={{
                   transition: "200ms",
@@ -458,9 +479,10 @@ const TopBar = () => {
               <Typography
                 variant="subtitle2"
                 color={"secondary.main"}
+                fontWeight={600}
                 fontSize={{
                   md: 14,
-                  xs: 8,
+                  xs: 10,
                 }}
                 sx={{
                   transition: "200ms",
@@ -476,9 +498,10 @@ const TopBar = () => {
               <Typography
                 variant="subtitle2"
                 color={"secondary.main"}
+                fontWeight={600}
                 fontSize={{
                   md: 14,
-                  xs: 8,
+                  xs: 10,
                 }}
                 sx={{
                   transition: "200ms",
@@ -506,9 +529,10 @@ const TopBar = () => {
             <Typography
               variant="body2"
               color="secondary.main"
+              fontWeight={600}
               fontSize={{
                 md: 12,
-                xs: 7,
+                xs: 9,
               }}
             >
               MY FAVORITS
@@ -544,9 +568,10 @@ const TopBar = () => {
             <Typography
               variant="body2"
               color="secondary.main"
+              fontWeight={600}
               fontSize={{
                 md: 12,
-                xs: 7,
+                xs: 9,
               }}
             >
               MY CART
@@ -556,7 +581,7 @@ const TopBar = () => {
                 color="primary.main"
                 pl={1}
               >
-                0
+                {cart.length}
               </Typography>
             </Typography>
           </Grid>
