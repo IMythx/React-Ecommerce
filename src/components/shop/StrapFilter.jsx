@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const StrapFilter = ({ onChange }) => {
   const [filters, setFilters] = useState(
@@ -30,7 +30,7 @@ const StrapFilter = ({ onChange }) => {
     onChange(newFilters);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     filters.length && onChange(filters);
   }, []);
 

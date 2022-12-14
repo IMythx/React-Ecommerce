@@ -117,7 +117,7 @@ const SideBar = ({ open, close, anchor }) => {
                               {item}
                             </Typography>
                             <Typography color="grey.main" variant="subtitle1">
-                              1x £{Watches[item]["price"]}
+                              1 x £{Watches[item]["price"]}
                             </Typography>
                           </Stack>
                           <ListItemIcon

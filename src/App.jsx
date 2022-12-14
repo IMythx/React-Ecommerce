@@ -7,9 +7,13 @@ import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
 import ItemDetails from "./pages/ItemDetails";
 import Shop from "./pages/Shop";
+import Cart from "./pages/Cart";
 const theme = createTheme({
   palette: {
     mode: "light",
+    white: {
+      main: "#fbfbfb",
+    },
     primary: {
       main: "#9b834d",
     },
@@ -33,6 +37,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/shop/:item" element={<ItemDetails />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
       <Footer />

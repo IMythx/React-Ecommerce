@@ -14,13 +14,24 @@ import Product from "../components/Product/Product";
 import { grey } from "@mui/material/colors";
 import InfoTab from "../components/tabs/Tab2";
 import ReviewsTab from "../components/tabs/Tab3";
+import { cartActions } from "../Store/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import CheckIcon from "@mui/icons-material/Check";
+
 const ItemDetails = () => {
   const { item } = useParams();
   const imgsSrc = Watches[item]["src"];
+  const dispatch = useDispatch();
+  const { cart } = useSelector((state) => state.cart);
+  const isInCart = cart.indexOf(item) !== -1;
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeTab, setActiveTab] = useState("description");
   const [mouseDown, setMouseDown] = useState(false);
+  const onAddHandler = () =>
+    dispatch(
+      cartActions.addItem({ name: item, price: +Watches[item]["price"] })
+    );
   const handleChange = (event, newValue) => {
     setActiveTab(newValue);
   };
@@ -151,14 +162,26 @@ const ItemDetails = () => {
                 borderRadius: "0",
                 px: 2,
                 backgroundColor: "primary.main",
+                columnGap: !isInCart && "0.7rem",
                 whiteSpace: "nowrap",
-                columnGap: "0.7rem",
                 "&:hover": {
                   backgroundColor: "secondary.main",
                 },
               }}
+              onClick={onAddHandler}
             >
-              <ShoppingCartOutlinedIcon /> ADD TO CART
+              {!isInCart && (
+                <Fragment>
+                  <ShoppingCartOutlinedIcon />
+                  ADD TO CART
+                </Fragment>
+              )}
+              {isInCart && (
+                <Fragment>
+                  <CheckIcon />
+                  ADDED
+                </Fragment>
+              )}
             </Button>
             <Button
               disableRipple

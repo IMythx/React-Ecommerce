@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const ColorsFilter = ({ onChange }) => {
   const [filters, setFilters] = useState(
@@ -28,7 +28,7 @@ const ColorsFilter = ({ onChange }) => {
     setFilters(newFilters);
     onChange(newFilters);
   };
-  useEffect(() => {
+  useLayoutEffect(() => {
     filters.length && onChange(filters);
   }, []);
   return (

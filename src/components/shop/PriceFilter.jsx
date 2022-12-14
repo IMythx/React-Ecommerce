@@ -1,5 +1,5 @@
 import { Slider, Typography, Button, Stack } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useLayoutEffect } from "react";
 import { grey } from "@mui/material/colors";
 
 const PriceFilter = ({ onChange }) => {
@@ -17,7 +17,7 @@ const PriceFilter = ({ onChange }) => {
   const onClickHandler = () => {
     onChange(filters);
   };
-  useEffect(() => {
+  useLayoutEffect(() => {
     (filters[0] !== 75 || filters[1] !== 500) && onChange(filters);
   }, []);
   return (
