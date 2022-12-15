@@ -56,8 +56,6 @@ const Cart = () => {
 
   const { cart, totalPrice } = useSelector((state) => state.cart);
 
-  console.log(sortedCartItems);
-
   useEffect(() => {
     navigate({
       pathname: location.pathname,
@@ -72,13 +70,21 @@ const Cart = () => {
         sx={{
           p: 2,
           display: "flex",
+          flexWrap: "wrap",
           columnGap: {
             sm: "2rem",
             xs: "0",
           },
         }}
       >
-        <Stack flex={1} rowGap={"1rem"}>
+        <Stack
+          flex={1}
+          rowGap={"1rem"}
+          width={{
+            md: "auto",
+            xs: "100%",
+          }}
+        >
           <Typography variant="h6" color={"secondary.main"} fontWeight={700}>
             Shopping Cart
           </Typography>
@@ -87,15 +93,26 @@ const Cart = () => {
             direction={"row"}
             justifyContent={"space-between"}
             alignItems="center"
+            gap={"1rem"}
           >
-            <Typography variant="body1" color={"grey.main"}>
+            <Typography
+              variant="body1"
+              color={"grey.main"}
+              fontSize={{
+                sm: "1rem",
+                xs: "0.8rem",
+              }}
+            >
               You have {cart.length} items in your cart
             </Typography>
             <Stack
               direction={"row"}
               color={"grey.main"}
               alignItems="center"
-              fontSize={"1.1rem"}
+              fontSize={{
+                sm: "1.1rem",
+                xs: "0.8rem",
+              }}
             >
               Sort By:
               <Box sx={{ minWidth: 120, ml: 1 }}>
@@ -118,15 +135,28 @@ const Cart = () => {
                 key={index}
                 sx={{
                   display: "flex",
-                  p: 3,
+                  p: {
+                    sm: 3,
+                    xs: 0,
+                  },
                   alignItems: "center",
                   justifyContent: "space-between",
+                  transition: "200ms",
+                  "&:hover": {
+                    transform: "translateY(-2px)",
+                    boxShadow: "0 4px 25px 0 rgb(34 41 47 / 25%)",
+                  },
                 }}
                 elevation={2}
               >
                 <CardMedia
                   component="img"
-                  sx={{ width: 100 }}
+                  sx={{
+                    width: {
+                      sm: 100,
+                      xs: 85,
+                    },
+                  }}
                   image={Watches[item]["src"][0]}
                   alt={item}
                 />
@@ -135,23 +165,70 @@ const Cart = () => {
                     display: "flex",
                     justifyContent: "center",
                     flexDirection: "column",
-                    rowGap: "1rem",
-                    width: "50%",
+                    rowGap: {
+                      sm: "1rem",
+                      xs: "0.5rem",
+                    },
+                    width: {
+                      sm: "50%",
+                      xs: "auto",
+                    },
+                    padding: {
+                      sm: 2,
+                      xs: 0,
+                    },
                   }}
                 >
                   <Typography
                     variant="subtitle1"
                     color={"primary.main"}
                     fontWeight={700}
+                    fontSize={{
+                      sm: "1rem",
+                      xs: "0.8rem",
+                    }}
                   >
                     {item}
                   </Typography>
-                  <Typography variant="body2" color={grey[500]}>
+                  <Typography
+                    variant="body2"
+                    color={grey[500]}
+                    fontSize={{
+                      sm: "1rem",
+                      xs: "0.6rem",
+                    }}
+                  >
                     {Watches[item]["brand"].toUpperCase()}
                   </Typography>
                 </CardContent>
-                <CardContent color={"grey.main"}>1</CardContent>
-                <CardContent color={"grey.main"}>
+                <CardContent
+                  color={"grey.main"}
+                  sx={{
+                    fontSize: {
+                      sm: "1rem",
+                      xs: "0.8rem",
+                    },
+                    p: {
+                      sm: 2,
+                      xs: 0.5,
+                    },
+                  }}
+                >
+                  1
+                </CardContent>
+                <CardContent
+                  color={"grey.main"}
+                  sx={{
+                    fontSize: {
+                      sm: "1rem",
+                      xs: "0.8rem",
+                    },
+                    p: {
+                      sm: 2,
+                      xs: 0.5,
+                    },
+                  }}
+                >
                   £{Watches[item]["price"]}
                 </CardContent>
                 <IconButton
@@ -167,6 +244,7 @@ const Cart = () => {
                   <DeleteIcon
                     sx={{
                       color: "grey.main",
+                      opacity: 0.5,
                     }}
                   />
                 </IconButton>
@@ -174,7 +252,16 @@ const Cart = () => {
             ))}
           </Stack>
         </Stack>
-        <Stack width={"35%"}>
+        <Stack
+          width={{
+            md: "35%",
+            xs: "100%",
+          }}
+          mt={{
+            md: "0",
+            xs: "1rem",
+          }}
+        >
           <Card
             sx={{
               bgcolor: "#27d18b",

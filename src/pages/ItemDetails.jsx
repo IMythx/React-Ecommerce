@@ -15,26 +15,45 @@ import { grey } from "@mui/material/colors";
 import InfoTab from "../components/tabs/Tab2";
 import ReviewsTab from "../components/tabs/Tab3";
 import { cartActions } from "../Store/cartSlice";
+import { favoritesActions } from "../Store/favoritesSlice";
 import { useDispatch, useSelector } from "react-redux";
 import CheckIcon from "@mui/icons-material/Check";
 
 const ItemDetails = () => {
   const { item } = useParams();
+
   const imgsSrc = Watches[item]["src"];
+
   const dispatch = useDispatch();
+
   const { cart } = useSelector((state) => state.cart);
+
+  const { favorites } = useSelector((state) => state.favorites);
+
   const isInCart = cart.indexOf(item) !== -1;
+
+  const isInfavorites = favorites.indexOf(item) !== -1;
+
   const [nav1, setNav1] = useState();
+
   const [nav2, setNav2] = useState();
+
   const [activeTab, setActiveTab] = useState("description");
+
   const [mouseDown, setMouseDown] = useState(false);
-  const onAddHandler = () =>
+
+  const onAddToCartHandler = () =>
     dispatch(
       cartActions.addItem({ name: item, price: +Watches[item]["price"] })
     );
+
+  const onAddToFavoritesHandler = () =>
+    dispatch(favoritesActions.addItem({ name: item }));
+
   const handleChange = (event, newValue) => {
     setActiveTab(newValue);
   };
+
   return (
     <Fragment>
       <Grid container py={10} justifyContent={"end"}>
@@ -168,7 +187,7 @@ const ItemDetails = () => {
                   backgroundColor: "secondary.main",
                 },
               }}
-              onClick={onAddHandler}
+              onClick={onAddToCartHandler}
             >
               {!isInCart && (
                 <Fragment>
@@ -195,8 +214,10 @@ const ItemDetails = () => {
                   color: "secondary.light",
                 },
               }}
+              onClick={onAddToFavoritesHandler}
             >
-              <FavoriteBorderOutlinedIcon /> ADD TO WISHLIST
+              <FavoriteBorderOutlinedIcon />
+              {!isInfavorites ? "ADD TO WISHLIST" : "ADDED"}
             </Button>
           </Stack>
           <Stack
@@ -309,7 +330,7 @@ const ItemDetails = () => {
             sm={6}
             xs={12}
             name={"THE RUNWELL SPORT CHRONO SILVER"}
-            border={false}
+            borderRight={false}
           />
         </Grid>
       </Grid>

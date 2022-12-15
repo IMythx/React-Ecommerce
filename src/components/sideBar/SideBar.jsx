@@ -16,12 +16,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../Store/cartSlice";
 import { grey } from "@mui/material/colors";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import VisibilityIcon from "@mui/icons-material/Visibility";
 import { Watches } from "../../Store/Watches";
 import { Fragment } from "react";
 
 const SideBar = ({ open, close, anchor }) => {
   const { cart, totalPrice } = useSelector((state) => state.cart);
+
   const dispatch = useDispatch();
 
   return (
@@ -194,46 +194,6 @@ const SideBar = ({ open, close, anchor }) => {
                         <ShoppingCartOutlinedIcon />
                       </ListItemIcon>
                       Checkout
-                    </ListItemButton>
-                  </Link>
-                </ListItem>
-                <ListItem
-                  sx={{
-                    px: 15,
-                  }}
-                  onClick={close}
-                >
-                  <Link
-                    component={RouterLink}
-                    to="/cart"
-                    underline="none"
-                    width={"100%"}
-                  >
-                    <ListItemButton
-                      sx={{
-                        fontSize: "0.8rem",
-                        columnGap: "0.5rem",
-                        justifyContent: "center",
-                        color: "primary.main",
-                        "&:hover": {
-                          bgcolor: "transparent",
-                        },
-                      }}
-                      disableRipple
-                    >
-                      <ListItemIcon
-                        sx={{
-                          minWidth: "fit-content",
-                          color: "primary.main",
-                        }}
-                      >
-                        <VisibilityIcon
-                          sx={{
-                            fontSize: "1.1rem ",
-                          }}
-                        />
-                      </ListItemIcon>
-                      View cart
                     </ListItemButton>
                   </Link>
                 </ListItem>

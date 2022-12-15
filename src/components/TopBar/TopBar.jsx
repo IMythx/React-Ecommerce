@@ -21,18 +21,26 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useSelector } from "react-redux";
 import SideBar from "../sideBar/SideBar";
+import { Link as RouterLink } from "react-router-dom";
+
 const TopBar = () => {
   const [isTablet, setIsTablet] = useState(
     window.matchMedia("(max-width:992px)").matches
   );
+
   const [isMobile, setIsMobile] = useState(
     window.matchMedia("(max-width:768px)").matches
   );
+
   const { cart } = useSelector((state) => state.cart);
+
+  const { favorites } = useSelector((state) => state.favorites);
+
   const [sideBar, setSideBar] = useState({
     open: false,
     side: "left",
   });
+
   const sideBarHandler = () =>
     setSideBar(
       (prev) =>
@@ -41,6 +49,7 @@ const TopBar = () => {
           side: "top", //i know it kinda makes no sense but drawer anchor prop accepts left, top, right, bottom as a value and if set it to left the left sidebar would pop up when im closing right side bar and if i set it to null or any other value an error would pop up
         })
     );
+
   useEffect(() => {
     window
       .matchMedia("(max-width:992px)")
@@ -49,6 +58,7 @@ const TopBar = () => {
       .matchMedia("(max-width:768px)")
       .addEventListener("change", (e) => setIsMobile(e.matches));
   }, []);
+
   return (
     <AppBar
       sx={{
@@ -519,32 +529,40 @@ const TopBar = () => {
             item
             xs={!isMobile ? 1.5 : 6}
             sx={{ gap: "0.3rem", cursor: "pointer" }}
-            justifyContent={"center"}
-            alignItems={"center"}
             borderRight={1}
             borderColor={grey[500]}
-            textAlign="center"
           >
-            <FavoriteBorderIcon />
-            <Typography
-              variant="body2"
-              color="secondary.main"
-              fontWeight={600}
-              fontSize={{
-                md: 12,
-                xs: 9,
-              }}
+            <Link
+              component={RouterLink}
+              width={"100%"}
+              display="flex"
+              justifyContent={"center"}
+              alignItems={"center"}
+              textAlign="center"
+              to="/favorites"
+              underline="none"
             >
-              MY FAVORITS
+              <FavoriteBorderIcon />
               <Typography
                 variant="body2"
-                component={"span"}
-                color="primary.main"
-                pl={1}
+                color="secondary.main"
+                fontWeight={600}
+                fontSize={{
+                  md: 12,
+                  xs: 9,
+                }}
               >
-                0
+                MY FAVORITS
+                <Typography
+                  variant="body2"
+                  component={"span"}
+                  color="primary.main"
+                  pl={1}
+                >
+                  {favorites.length}
+                </Typography>
               </Typography>
-            </Typography>
+            </Link>
           </Grid>
           <Grid
             container

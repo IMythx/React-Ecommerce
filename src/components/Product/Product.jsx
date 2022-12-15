@@ -14,6 +14,7 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../Store/cartSlice";
+import { favoritesActions } from "../../Store/favoritesSlice";
 import CheckIcon from "@mui/icons-material/Check";
 
 const Product = ({
@@ -37,17 +38,32 @@ const Product = ({
     },
   });
   const [isHovered, setIsHovered] = useState(false);
+
   const [isTablet, setIsTablet] = useState(
     window.matchMedia("(max-width:899px)").matches
   );
   const dispatch = useDispatch();
+
   const { cart } = useSelector((state) => state.cart);
+
+  const { favorites } = useSelector((state) => state.favorites);
+
   const item = Watches[name];
+
   const isInCart = cart.indexOf(name) !== -1;
+
+  const isInFavorites = favorites.indexOf(name) !== -1;
+
   const navigate = useNavigate();
+
   const clickHandler = () => navigate(`/shop/${name}`);
-  const onAddHandler = () =>
+
+  const onAddToCartHandler = () =>
     dispatch(cartActions.addItem({ name, price: +item.price }));
+
+  const onAddToFavoritesHandler = () =>
+    dispatch(favoritesActions.addItem({ name }));
+
   const raise = keyframes`
   to{
     opacity:1;
@@ -169,7 +185,7 @@ const Product = ({
                 color: "#fff",
               },
             }}
-            onClick={onAddHandler}
+            onClick={onAddToCartHandler}
           >
             {!isInCart && (
               <Fragment>
@@ -192,10 +208,10 @@ const Product = ({
             disableRipple
             variant="text"
             sx={{
-              color: "secondary.main",
+              color: isInFavorites ? "#fff" : "secondary.main",
               px: 2,
               borderRadius: "0",
-              backgroundColor: "transparent",
+              backgroundColor: isInFavorites ? "secondary.main" : "transparent",
               minWidth: "auto",
               border: 1,
               borderColor: "secondary.main",
@@ -204,6 +220,7 @@ const Product = ({
                 color: "#fff",
               },
             }}
+            onClick={onAddToFavoritesHandler}
           >
             <FavoriteBorderOutlinedIcon
               sx={{
