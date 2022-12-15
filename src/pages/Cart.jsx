@@ -14,29 +14,63 @@ import {
   Select,
   MenuItem,
   TextField,
-  useTheme,
+  Button,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { cartActions } from "../Store/cartSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Watches } from "../Store/Watches";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PaypalIcon from "../components/Cart/PaypalIcon";
 import MasterCardIcon from "../components/Cart/MasterCradIcon";
 import VisAIcon from "../components/Cart/VisaIcon";
 import AmericanExpressIcon from "../components/Cart/AmericanExpressIcon";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import { useNavigate } from "react-router-dom";
+
+let sortedCartItems = [];
+
 const Cart = () => {
-  const theme = useTheme();
-  const [sortType, setSortType] = useState(1);
+  const [sortType, setSortType] = useState(
+    new URLSearchParams(location.search).get("SORT")
+      ? new URLSearchParams(location.search).get("SORT") === "PRICE"
+        ? 1
+        : 2
+      : 1
+  );
+
+  const [sortQuery, setSortQuery] = useState(
+    new URLSearchParams(location.search).get("SORT") ?? ""
+  );
+
+  const navigate = useNavigate();
+
+  const [card, setCard] = useState("paypal");
+
   const dispatch = useDispatch();
+
   const handleChange = (event) => {
     setSortType(event.target.value);
+    setSortQuery(event.target.value === 1 ? "PRICE" : "NAME");
   };
-  const { cart } = useSelector((state) => state.cart);
+
+  const { cart, totalPrice } = useSelector((state) => state.cart);
+
+  console.log(sortedCartItems);
+
+  useEffect(() => {
+    navigate({
+      pathname: location.pathname,
+      search: sortQuery !== "" && `SORT=${sortQuery}`,
+    });
+    sortedCartItems = sortFun(cart, sortQuery);
+  }, [sortQuery, cart]);
+
   return (
-    <Box bgcolor={grey[100]} p={1}>
+    <Box bgcolor={grey[100]} p={3}>
       <Paper
         sx={{
+          p: 2,
           display: "flex",
           columnGap: {
             sm: "2rem",
@@ -44,18 +78,27 @@ const Cart = () => {
           },
         }}
       >
-        <Stack flex={1}>
+        <Stack flex={1} rowGap={"1rem"}>
           <Typography variant="h6" color={"secondary.main"} fontWeight={700}>
             Shopping Cart
           </Typography>
           <Divider />
-          <Stack direction={"row"} justifyContent={"space-between"}>
+          <Stack
+            direction={"row"}
+            justifyContent={"space-between"}
+            alignItems="center"
+          >
             <Typography variant="body1" color={"grey.main"}>
               You have {cart.length} items in your cart
             </Typography>
-            <Stack direction={"row"} color={"grey.main"}>
+            <Stack
+              direction={"row"}
+              color={"grey.main"}
+              alignItems="center"
+              fontSize={"1.1rem"}
+            >
               Sort By:
-              <Box sx={{ minWidth: 120 }}>
+              <Box sx={{ minWidth: 120, ml: 1 }}>
                 <FormControl fullWidth>
                   <Select
                     variant="standard"
@@ -70,19 +113,40 @@ const Cart = () => {
             </Stack>
           </Stack>
           <Stack spacing={2}>
-            {cart.map((item, index) => (
-              <Card key={index} sx={{ display: "flex", p: 3 }} elevation={3}>
+            {sortedCartItems.map((item, index) => (
+              <Card
+                key={index}
+                sx={{
+                  display: "flex",
+                  p: 3,
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                }}
+                elevation={2}
+              >
                 <CardMedia
                   component="img"
                   sx={{ width: 100 }}
                   image={Watches[item]["src"][0]}
                   alt={item}
                 />
-                <CardContent>
-                  <Typography variant="subtitle1" color={"primary.main"}>
+                <CardContent
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    flexDirection: "column",
+                    rowGap: "1rem",
+                    width: "50%",
+                  }}
+                >
+                  <Typography
+                    variant="subtitle1"
+                    color={"primary.main"}
+                    fontWeight={700}
+                  >
                     {item}
                   </Typography>
-                  <Typography variant="body1" color={"grey.main"}>
+                  <Typography variant="body2" color={grey[500]}>
                     {Watches[item]["brand"].toUpperCase()}
                   </Typography>
                 </CardContent>
@@ -122,11 +186,12 @@ const Cart = () => {
                 color: "#fff",
                 fontWeight: 700,
                 textAlign: "center",
+                fontSize: "1.5rem",
               }}
             />
-            <CardContent>
+            <CardContent sx={{ p: 3 }}>
               <Typography variant="body2" color={"#fff"} pl={0.9}>
-                Card Type{" "}
+                Card Type
               </Typography>
               <Stack
                 direction={"row"}
@@ -136,16 +201,53 @@ const Cart = () => {
                   },
                 }}
               >
-                <IconButton sx={{ height: "47.98px" }}>
+                <IconButton
+                  sx={{
+                    height: "47.98px",
+                    backgroundColor: card === "paypal" && "#00000029",
+                    "&:hover": {
+                      backgroundColor: card === "paypal" && "#00000029",
+                    },
+                  }}
+                  onClick={() => setCard("paypal")}
+                >
                   <PaypalIcon />
                 </IconButton>
-                <IconButton sx={{ height: "47.98px" }}>
+                <IconButton
+                  sx={{
+                    height: "47.98px",
+                    backgroundColor: card === "masterCard" && "#00000029",
+                    "&:hover": {
+                      backgroundColor: card === "masterCard" && "#00000029",
+                    },
+                  }}
+                  onClick={() => setCard("masterCard")}
+                >
                   <MasterCardIcon />
                 </IconButton>
-                <IconButton sx={{ height: "47.98px" }}>
+                <IconButton
+                  sx={{
+                    height: "47.98px",
+                    backgroundColor: card === "americanExpress" && "#00000029",
+                    "&:hover": {
+                      backgroundColor:
+                        card === "americanExpress" && "#00000029",
+                    },
+                  }}
+                  onClick={() => setCard("americanExpress")}
+                >
                   <AmericanExpressIcon />
                 </IconButton>
-                <IconButton sx={{ height: "47.98px" }}>
+                <IconButton
+                  sx={{
+                    height: "47.98px",
+                    backgroundColor: card === "visa" && "#00000029",
+                    "&:hover": {
+                      backgroundColor: card === "visa" && "#00000029",
+                    },
+                  }}
+                  onClick={() => setCard("visa")}
+                >
                   <VisAIcon />
                 </IconButton>
               </Stack>
@@ -154,6 +256,7 @@ const Cart = () => {
                 flexWrap={"wrap"}
                 rowGap={"2rem"}
                 columnGap={"2rem"}
+                mt={3}
                 sx={{
                   "& .MuiInputLabel-root": {
                     color: "white.main",
@@ -208,6 +311,87 @@ const Cart = () => {
                   sx={{ width: "100%", borderColor: "#ffffff70 !important" }}
                 />
               </Stack>
+              <Stack rowGap={"1rem"} mt={3}>
+                <Stack justifyContent={"space-between"} direction="row">
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    Subtotal
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    £{totalPrice}
+                  </Typography>
+                </Stack>
+                <Stack justifyContent={"space-between"} direction="row">
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    Shipping
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    £{20}
+                  </Typography>
+                </Stack>
+                <Stack justifyContent={"space-between"} direction="row">
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    Total(Incl. taxes)
+                  </Typography>
+                  <Typography
+                    variant="subtitle1"
+                    color="white.main"
+                    fontWeight={600}
+                  >
+                    £{20 + totalPrice}
+                  </Typography>
+                </Stack>
+              </Stack>
+              <Button
+                disableRipple
+                variant={"outlined"}
+                sx={{
+                  py: 1,
+                  mt: 3,
+                  columnGap: "2rem",
+                  width: "100%",
+                  border: "none",
+                  bgcolor: "#179f67a1 !important",
+                  "&:hover": {
+                    border: "none !important",
+                    backgroundColor: "#179f675e !important",
+                  },
+                }}
+              >
+                <Typography color="white.main" fontWeight={600} variant="body2">
+                  £{totalPrice}
+                </Typography>
+                <Stack direction="row" alignItems="center" spacing={1}>
+                  <Typography
+                    color="white.main"
+                    textAlign={"center"}
+                    fontWeight={600}
+                    variant="body2"
+                  >
+                    CHECKOUT
+                  </Typography>
+                  <ArrowRightAltIcon sx={{ color: "white.main" }} />
+                </Stack>
+              </Button>
             </CardContent>
           </Card>
         </Stack>
@@ -217,3 +401,15 @@ const Cart = () => {
 };
 
 export default Cart;
+
+const sortFun = (arr, type) => {
+  let copiedArr = arr.slice(); //u cant sort the array from redux so u gotta copy it or u will get a an error
+  let sortedArr;
+
+  type === "NAME"
+    ? (sortedArr = copiedArr.sort())
+    : (sortedArr = copiedArr.sort(
+        (a, b) => +Watches[a]["price"] - +Watches[b]["price"]
+      ));
+  return sortedArr;
+};
