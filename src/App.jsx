@@ -9,6 +9,9 @@ import ItemDetails from "./pages/ItemDetails";
 import Shop from "./pages/Shop";
 import Cart from "./pages/Cart";
 import Favorites from "./pages/Favorites";
+import About from "./pages/About";
+import Delivery from "./pages/Delivery";
+import Contacts from "./pages/Contacts";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -40,6 +43,9 @@ function App() {
           <Route path="/shop/:item" element={<ItemDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/delivery" element={<Delivery />} />
+          <Route path="/contacts" element={<Contacts />} />
         </Routes>
       </main>
       <Footer />

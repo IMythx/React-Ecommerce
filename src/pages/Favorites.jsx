@@ -30,7 +30,7 @@ const Favorites = () => {
   return (
     <Box bgcolor={grey[100]}>
       <Typography
-        variant="h5"
+        variant="h4"
         color={"secondary.main"}
         fontWeight={600}
         pt={2}
@@ -38,13 +38,7 @@ const Favorites = () => {
       >
         Whishlist
       </Typography>
-      <Grid
-        container
-        p={2}
-        spacing={3}
-        borderBottom={1}
-        borderColor={`${grey[500]} !important`}
-      >
+      <Grid container p={2} spacing={3}>
         {!favorites.length && (
           <Typography
             variant="h6"
@@ -180,7 +174,7 @@ const Favorites = () => {
                     dispatch(
                       cartActions.addItem({
                         name: item,
-                        price: Watches[item]["price"],
+                        price: +Watches[item]["price"],
                       })
                     );
                   }}

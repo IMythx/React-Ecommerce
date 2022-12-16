@@ -30,6 +30,8 @@ const Footer = () => {
           md: 3,
           xs: 0,
         }}
+        borderTop={1}
+        borderColor={`${grey[500]} !important`}
       >
         <Grid
           item

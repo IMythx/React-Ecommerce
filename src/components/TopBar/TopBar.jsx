@@ -197,7 +197,7 @@ const TopBar = () => {
                 gap: "0.5rem",
                 cursor: "pointer",
                 "& svg": {
-                  color: grey[600],
+                  color: "secondary.main",
                   transition: "200ms",
                   fontSize: 20,
                 },
@@ -285,7 +285,7 @@ const TopBar = () => {
             color="grey.main"
             pl={"0.5rem"}
             sx={{
-              fontSize: "0.7rem",
+              fontSize: "0.6rem",
               alignItems: "center",
               gap: "0.2rem",
               "& svg": {
@@ -333,7 +333,7 @@ const TopBar = () => {
                     variant="subtitle2"
                     color={"gray.main"}
                     fontWeight={600}
-                    fontSize={11}
+                    fontSize={13}
                   >
                     LOGIN
                   </Typography>
@@ -347,7 +347,7 @@ const TopBar = () => {
                     variant="subtitle2"
                     color={"gray.main"}
                     fontWeight={600}
-                    fontSize={11}
+                    fontSize={13}
                   >
                     REGISTER
                   </Typography>
@@ -439,7 +439,7 @@ const TopBar = () => {
                 onClick={handleToggle}
               />
             </Stack>
-            <Typography variant={"h4"} color={"#fff"} fontWeight={700}>
+            <Typography variant={"h4"} color={"#fff"} fontWeight={700} mt={15}>
               SEARCH
             </Typography>
             <Stack
