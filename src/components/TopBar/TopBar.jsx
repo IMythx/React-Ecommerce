@@ -7,6 +7,9 @@ import {
   Link,
   Divider,
   Grid,
+  TextField,
+  Backdrop,
+  Box,
 } from "@mui/material";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -22,6 +25,7 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useSelector } from "react-redux";
 import SideBar from "../sideBar/SideBar";
 import { Link as RouterLink } from "react-router-dom";
+import CloseIcon from "@mui/icons-material/Close";
 
 const TopBar = () => {
   const [isTablet, setIsTablet] = useState(
@@ -36,6 +40,8 @@ const TopBar = () => {
 
   const { favorites } = useSelector((state) => state.favorites);
 
+  const [isSearching, setIsSearching] = useState(false);
+
   const [sideBar, setSideBar] = useState({
     open: false,
     side: "left",
@@ -49,6 +55,8 @@ const TopBar = () => {
           side: "top", //i know it kinda makes no sense but drawer anchor prop accepts left, top, right, bottom as a value and if set it to left the left sidebar would pop up when im closing right side bar and if i set it to null or any other value an error would pop up
         })
     );
+
+  const handleToggle = () => setIsSearching((prev) => !prev);
 
   useEffect(() => {
     window
@@ -388,6 +396,74 @@ const TopBar = () => {
             },
           }}
         >
+          <Backdrop
+            open={isSearching}
+            sx={{
+              justifyContent: "start",
+              rowGap: "10rem",
+              backgroundColor: "#1e2123eb",
+              zIndex: "tooltip",
+              flexDirection: "column",
+              "& .MuiInput-root": {
+                color: "white.main",
+              },
+              "& .MuiInputBase-root.MuiInput-root:before": {
+                border: "none !important",
+              },
+              "& .MuiInputBase-root.MuiInput-root:after": {
+                border: "none !important",
+              },
+            }}
+          >
+            <Stack
+              width={"100%"}
+              direction="row"
+              justifyContent="end"
+              mt={{
+                md: "2rem",
+                sm: "3rem",
+                xs: "1rem",
+              }}
+            >
+              <CloseIcon
+                sx={{
+                  cursor: "pointer",
+                  color: "#fff !important",
+                  fontSize: "2rem !important",
+                  mr: {
+                    md: "8rem",
+                    sm: "3rem",
+                    xs: "1rem",
+                  },
+                }}
+                onClick={handleToggle}
+              />
+            </Stack>
+            <Typography variant={"h4"} color={"#fff"} fontWeight={700}>
+              SEARCH
+            </Typography>
+            <Stack
+              direction="row"
+              borderBottom={1}
+              borderColor={"#fbfbfb !important"}
+              width={{
+                md: "60%",
+                sm: "80%",
+                xs: "90%",
+              }}
+              justifyContent="space-between"
+            >
+              <TextField
+                sx={{ width: "100%" }}
+                color={"white"}
+                variant="standard"
+                placeholder="what are you looking for?"
+              />
+              <SearchIcon
+                sx={{ cursor: "pointer", color: "#fff !important" }}
+              />
+            </Stack>
+          </Backdrop>
           <Grid
             item
             container
@@ -397,6 +473,7 @@ const TopBar = () => {
             justifyContent={"center"}
             borderBottom={isMobile && 1}
             borderColor={grey[500]}
+            onClick={handleToggle}
           >
             <SearchIcon />
             <Typography
@@ -528,7 +605,7 @@ const TopBar = () => {
             container
             item
             xs={!isMobile ? 1.5 : 6}
-            sx={{ gap: "0.3rem", cursor: "pointer" }}
+            sx={{ cursor: "pointer" }}
             borderRight={1}
             borderColor={grey[500]}
           >
@@ -541,6 +618,7 @@ const TopBar = () => {
               textAlign="center"
               to="/favorites"
               underline="none"
+              sx={{ gap: "0.3rem" }}
             >
               <FavoriteBorderIcon />
               <Typography

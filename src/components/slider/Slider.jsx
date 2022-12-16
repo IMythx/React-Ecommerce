@@ -79,7 +79,7 @@ const ImgSlider = () => {
               lg: "0.7rem",
               xs: "0.4rem",
             }}
-            zIndex={"tooltip"}
+            zIndex={"fab"}
           >
             <Typography
               color={"primary.main"}

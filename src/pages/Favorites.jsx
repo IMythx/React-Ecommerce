@@ -38,7 +38,24 @@ const Favorites = () => {
       >
         Whishlist
       </Typography>
-      <Grid container p={2} spacing={3}>
+      <Grid
+        container
+        p={2}
+        spacing={3}
+        borderBottom={1}
+        borderColor={`${grey[500]} !important`}
+      >
+        {!favorites.length && (
+          <Typography
+            variant="h6"
+            color={"secondary.main"}
+            fontWeight={600}
+            mt={10}
+            pl={3}
+          >
+            No products were added to the wishlist.
+          </Typography>
+        )}
         {favorites.map((item, index) => (
           <Grid
             key={index}
