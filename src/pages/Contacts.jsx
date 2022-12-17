@@ -15,7 +15,7 @@ const Contacts = () => {
     <Stack rowGap={"3rem"} mb={8}>
       <Box>
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d55241.69921456905!2d31.234320495458995!3d30.07682051152999!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1671221817817!5m2!1sen!2seg"
+          src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d13814.633213444751!2d31.22442674393776!3d30.04665935529822!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2seg!4v1671285293737!5m2!1sen!2seg"
           width="100%"
           height="500"
           allowFullScreen

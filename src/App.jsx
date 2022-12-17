@@ -12,6 +12,7 @@ import Favorites from "./pages/Favorites";
 import About from "./pages/About";
 import Delivery from "./pages/Delivery";
 import Contacts from "./pages/Contacts";
+import Login from "./pages/logIn";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -46,6 +47,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </main>
       <Footer />

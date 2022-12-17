@@ -73,12 +73,7 @@ const BrandsFilter = ({ onChange }) => {
                 },
               }}
             >
-              <ListItemButton
-                role={undefined}
-                onClick={handleToggle(value)}
-                dense
-                disableRipple
-              >
+              <ListItemButton onClick={handleToggle(value)} dense disableRipple>
                 <ListItemIcon>
                   <Checkbox
                     edge="start"
