@@ -13,6 +13,7 @@ import { Stack } from "@mui/system";
 const ReviewsTab = ({ name }) => {
   return (
     <Grid
+      item
       xs={12}
       container
       direction={"column"}

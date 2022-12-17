@@ -25,7 +25,7 @@ const SideBar = ({ open, close, anchor }) => {
   const dispatch = useDispatch();
 
   return (
-    <Drawer open={open} onClose={anchor === "left" && close} anchor={anchor}>
+    <Drawer open={open} onClose={close} anchor={anchor}>
       <Box
         sx={{
           width:

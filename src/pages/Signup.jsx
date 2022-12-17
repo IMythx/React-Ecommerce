@@ -1,17 +1,15 @@
 import {
+  Stack,
   TextField,
   Typography,
-  FormControlLabel,
-  Checkbox,
   Button,
   Paper,
   Link,
-  Stack,
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { Link as RouterLink } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   return (
     <Stack py={10} bgcolor={grey[100]}>
       <Paper
@@ -38,7 +36,7 @@ const Login = () => {
           fontWeight={600}
           textAlign={"center"}
         >
-          Login
+          Signup
         </Typography>
         <Stack
           rowGap={{
@@ -49,7 +47,19 @@ const Login = () => {
           <TextField
             size="small"
             variant="outlined"
-            label="Email"
+            label="Email or Mobile Number"
+            color={"grey"}
+          />
+          <TextField
+            size="small"
+            variant="outlined"
+            label="Full Name"
+            color={"grey"}
+          />
+          <TextField
+            size="small"
+            variant="outlined"
+            label="Username"
             color={"grey"}
           />
           <TextField
@@ -58,41 +68,17 @@ const Login = () => {
             label="Password"
             color={"grey"}
           />
-          <FormControlLabel
-            control={<Checkbox />}
-            label="Remember me"
-            sx={{
-              mb: {
-                sm: -4,
-                xs: -3,
-              },
-            }}
-          />
           <Button
             sx={{
               width: "fit-content",
             }}
             variant="contained"
           >
-            log in
+            Sign up
           </Button>
-          <Link
-            sx={{
-              transition: "200ms",
-              color: "primary.main",
-              "&:hover": {
-                color: "grey.main",
-              },
-            }}
-            underline={"none"}
-            component={RouterLink}
-            to="/reset"
-          >
-            Forgot password?
-          </Link>
           <Stack direction={"row"} columnGap={"0.5rem"} alignItems={"center"}>
             <Typography variant="body1" color={"grey.main"}>
-              Don't have an account?
+              Have an account?
             </Typography>
             <Link
               sx={{
@@ -105,9 +91,9 @@ const Login = () => {
               }}
               underline={"none"}
               component={RouterLink}
-              to="/signup"
+              to="/login"
             >
-              Sign up
+              Log in
             </Link>
           </Stack>
         </Stack>
@@ -116,4 +102,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;

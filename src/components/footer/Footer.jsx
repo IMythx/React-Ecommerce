@@ -56,9 +56,9 @@ const Footer = () => {
           item
           md={4.5}
           xs={12}
-          container={{
-            sm: true,
-            xs: false,
+          display={{
+            sm: "flex",
+            xs: "initial",
           }}
           justifyContent={{
             md: "auto",
@@ -386,7 +386,7 @@ const Footer = () => {
                       },
                     }}
                     component={RouterLink}
-                    to="/wishlist"
+                    to="/favorites"
                     underline="none"
                   >
                     Wishlist

@@ -2,7 +2,7 @@ import { createTheme, ThemeProvider } from "@mui/material";
 import TopBar from "./components/TopBar/TopBar";
 import "./App.css";
 import { grey } from "@mui/material/colors";
-import { Routes, Route, ScrollRestoration } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/footer/Footer";
 import ItemDetails from "./pages/ItemDetails";
@@ -12,7 +12,9 @@ import Favorites from "./pages/Favorites";
 import About from "./pages/About";
 import Delivery from "./pages/Delivery";
 import Contacts from "./pages/Contacts";
-import Login from "./pages/logIn";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import PasswordReset from "./pages/RecoverPassword";
 const theme = createTheme({
   palette: {
     mode: "light",
@@ -48,6 +50,8 @@ function App() {
           <Route path="/delivery" element={<Delivery />} />
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/reset" element={<PasswordReset />} />
         </Routes>
       </main>
       <Footer />
