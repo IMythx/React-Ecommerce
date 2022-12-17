@@ -79,7 +79,7 @@ const Delivery = () => {
                 £20
               </Typography>
             </Stack>
-            <Typography variant="body1" color="grey.main" mb={2}>
+            <Typography variant="body2" color="grey.main" mb={2}>
               Delivered on or before Thursday, 20 September 2022
             </Typography>
             <Divider
@@ -131,7 +131,7 @@ const Delivery = () => {
                 £30
               </Typography>
             </Stack>
-            <Typography variant="body1" color="grey.main" mb={2}>
+            <Typography variant="body2" color="grey.main" mb={2}>
               Delivered on or before Wednesday, 12 September 2022
             </Typography>
             <Divider
