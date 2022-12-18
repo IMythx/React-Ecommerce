@@ -13,6 +13,8 @@ import { grey } from "@mui/material/colors";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import img1 from "../../assets/single-1.jpg";
+import img2 from "../../assets/single-2.jpg";
 
 const DescriptionTab = () => {
   return (
@@ -236,7 +238,7 @@ const DescriptionTab = () => {
         borderColor={`${grey[500]} !important`}
       >
         <img
-          src="../src/assets/single-1.jpg"
+          src={img1}
           alt=""
           style={{
             width: "100%",
@@ -317,7 +319,7 @@ const DescriptionTab = () => {
         borderColor={`${grey[500]} !important`}
       >
         <img
-          src="../src/assets/single-2.jpg"
+          src={img2}
           alt=""
           style={{
             width: "100%",

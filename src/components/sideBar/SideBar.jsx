@@ -47,10 +47,13 @@ const SideBar = ({ open, close, anchor }) => {
       >
         {anchor === "left" && (
           <List>
-            {["HOME", "ABOUT", "DELIVERY", "CONTACT"].map((text) => (
+            {["HOME", "ABOUT", "DELIVERY", "CONTACTS"].map((text) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <NavLink
+                    style={{
+                      width: "100%",
+                    }}
                     className={({ isActive }) => (isActive ? "active" : "")}
                     to={text === "HOME" ? "/" : `/${text.toLowerCase()}`}
                   >
@@ -160,12 +163,7 @@ const SideBar = ({ open, close, anchor }) => {
                     </Typography>
                   </ListItemText>
                 </ListItem>
-                <ListItem
-                  sx={{
-                    px: 15,
-                  }}
-                  onClick={close}
-                >
+                <ListItem onClick={close}>
                   <Link
                     component={RouterLink}
                     to="/cart"
@@ -179,6 +177,8 @@ const SideBar = ({ open, close, anchor }) => {
                         justifyContent: "center",
                         color: "#fff",
                         bgcolor: "#27d18b",
+                        width: "200px",
+                        mx: "auto",
                         "&:hover": {
                           bgcolor: "#78e6b9",
                         },

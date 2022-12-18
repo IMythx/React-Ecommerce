@@ -53,6 +53,7 @@ const Contacts = () => {
             flexDirection={"column"}
             rowGap={"2rem"}
             pt={3.5}
+            px={1}
           >
             <TextField
               size="small"
@@ -160,6 +161,7 @@ const Contacts = () => {
             container
             flexDirection={"column"}
             rowGap={"2rem"}
+            px={1}
             sx={{
               "& textarea": {
                 "&:focus": {

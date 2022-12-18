@@ -18,6 +18,8 @@ import PaidOutlinedIcon from "@mui/icons-material/PaidOutlined";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import Service from "../components/service/service";
+import forHerImg from "../assets/for-her.jpg";
+import forHimImg from "../assets/for-him.jpg";
 
 const Home = () => {
   return (
@@ -254,7 +256,7 @@ const Home = () => {
             </Button>
           </Stack>
           <img
-            src="src/assets/for-her.jpg"
+            src={forHerImg}
             style={{ width: "100%", minHeight: "100%" }}
             alt=""
           />
@@ -309,7 +311,7 @@ const Home = () => {
             </Button>
           </Stack>
           <img
-            src="src/assets/for-him.jpg"
+            src={forHimImg}
             style={{ width: "100%", minHeight: "100%" }}
             alt=""
           />
