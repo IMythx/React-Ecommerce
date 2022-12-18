@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 import { grey } from "@mui/material/colors";
 import { Stack } from "@mui/system";
+import UserImg from "../../assets/user.jpg";
 
 const ReviewsTab = ({ name }) => {
   return (
@@ -41,7 +42,7 @@ const ReviewsTab = ({ name }) => {
       <Stack direction={"row"} width={"fit-content"} spacing={2}>
         <Box>
           <img
-            src="../src/assets/user.jpg"
+            src={UserImg}
             style={{
               width: "100%",
             }}

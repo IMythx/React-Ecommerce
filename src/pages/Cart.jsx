@@ -303,6 +303,8 @@ const Cart = () => {
               <Card
                 sx={{
                   bgcolor: "#27d18b",
+                  position: "sticky",
+                  top: "10px",
                 }}
               >
                 <CardHeader
